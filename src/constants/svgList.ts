@@ -8,34 +8,30 @@ const svgList: SvgListType = {
     happiness: [
       ['thin_eyes.svg', 'open_mouth.svg']
     ],
-    sad: [
+    sadness: [
       ['sad_eyes.svg', 'sad_mouth.svg']
     ],
-    angry: [],
-    glad: [],
-    normal: []
-  },
-  cap: {
-    cap: [
-      ['male_hair_style_23.svg', 'cap.svg']
-    ],
-    nocap: [
-      ['male_hair_style_1.svg']
-    ]
+    anger: [],
+    contempt: [],
+    disgust: [],
+    fear: [],
+    surprise: []
   },
   glasses: {
-    glasses: [
+    reading_glasses: [
       ['glasses.svg'],
       ['stylish_glasses.svg'],
       ['rounded_glasses.svg']
     ],
-    noglasses: []
+    no_glasses: [],
+    sunglasses: []
   },
-  facialHair: {
-    mousthace: ['mousthace_1.svg'],
-    beard: ['beard_3.svg'],
-    sideburns: [],
-    none: []
+  facial_hair: {
+    beard: [],
+    beard_mustache: [],
+    beard_sideburns: [],
+    beard_siderburs_mustache: [],
+    mustache: []
   },
   gender: {
     male: [
@@ -55,6 +51,9 @@ const svgList: SvgListType = {
       ['head_7.svg'],
       ['head_8.svg']
     ]
+  },
+  head: {
+
   }
 }
 

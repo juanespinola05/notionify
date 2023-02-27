@@ -5,11 +5,10 @@ import { mapDetailsToSvg } from './utils/mapDetailsToSvg'
 
 function App (): ReactElement {
   const details: Partial<PersonDetails> = {
-    emotion: 'sad',
-    cap: 'nocap',
-    gender: 'female',
-    glasses: 'glasses',
-    facialHair: 'beard'
+    emotion: 'sadness',
+    gender: 'male',
+    glasses: 'reading_glasses',
+    facial_hair: 'beard_mustache'
   }
 
   const svgToRender = mapDetailsToSvg(details)
