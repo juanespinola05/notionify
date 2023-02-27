@@ -13,6 +13,7 @@ export function mapDetailsToSvg (details: Partial<PersonDetails>): string[] {
     return getRandomCombination(detail[value as keyof typeof detail])
   })
 
+  avatarSvgs.sort((a) => a.includes('cap') ? -1 : 1)
   avatarSvgs.sort((a) => a.includes('head') ? -1 : 1)
   return avatarSvgs
 }
