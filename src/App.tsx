@@ -4,11 +4,12 @@ import { PersonDetails } from './types'
 import { mapDetailsToSvg } from './utils/mapDetailsToSvg'
 
 function App (): ReactElement {
-  const details: Partial<PersonDetails> = {
-    emotion: 'sadness',
-    gender: 'male',
-    glasses: 'reading_glasses',
-    facial_hair: 'beard_mustache'
+  const details: PersonDetails = {
+    emotion: 'anger',
+    gender: 'female',
+    glasses: 'no_glasses',
+    facial_hair: 'none',
+    head: 'female_large'
   }
 
   const svgToRender = mapDetailsToSvg(details)
