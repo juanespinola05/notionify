@@ -1,0 +1,221 @@
+{
+    "detection": {
+        "adv_face": {
+            "status": "complete",
+            "data": [
+                {
+                    "bounding_box": {
+                        "top": 360.0844277673546,
+                        "left": 334.4784240150094,
+                        "width": 196.84615384615384,
+                        "height": 196.84615384615384
+                    },
+                    "attributes": {
+                        "smile": 0.001,
+                        "head_pose": {
+                            "pitch": 4.4,
+                            "roll": 5.3,
+                            "yaw": 29.7
+                        },
+                        "gender": "male",
+                        "age": 25,
+                        "facial_hair": {
+                            "moustache": 0.1,
+                            "beard": 0.1,
+                            "sideburns": 0.1
+                        },
+                        "glasses": "NoGlasses",
+                        "emotion": {
+                            "anger": 0,
+                            "contempt": 0.001,
+                            "disgust": 0,
+                            "fear": 0.002,
+                            "happiness": 0.001,
+                            "neutral": 0.816,
+                            "sadness": 0.001,
+                            "surprise": 0.18
+                        },
+                        "blur": {
+                            "blurLevel": "medium",
+                            "value": 0.28
+                        },
+                        "exposure": {
+                            "exposureLevel": "overExposure",
+                            "value": 1
+                        },
+                        "noise": {
+                            "noiseLevel": "low",
+                            "value": 0.26
+                        },
+                        "makeup": {
+                            "eyeMakeup": true,
+                            "lipMakeup": false
+                        },
+                        "accessories": [],
+                        "occlusion": {
+                            "foreheadOccluded": false,
+                            "eyeOccluded": false,
+                            "mouthOccluded": false
+                        },
+                        "hair": {
+                            "bald": 0.02,
+                            "invisible": false,
+                            "hairColor": [
+                                {
+                                    "color": "brown",
+                                    "confidence": 1
+                                },
+                                {
+                                    "color": "black",
+                                    "confidence": 0.56
+                                },
+                                {
+                                    "color": "blond",
+                                    "confidence": 0.42
+                                },
+                                {
+                                    "color": "gray",
+                                    "confidence": 0.25
+                                },
+                                {
+                                    "color": "red",
+                                    "confidence": 0.12
+                                },
+                                {
+                                    "color": "other",
+                                    "confidence": 0.02
+                                },
+                                {
+                                    "color": "white",
+                                    "confidence": 0
+                                }
+                            ]
+                        }
+                    },
+                    "facial_landmarks": {
+                        "mouth": {
+                            "left": {
+                                "x": 396.89305816135084,
+                                "y": 510.67973733583494
+                            },
+                            "right": {
+                                "x": 458.987617260788,
+                                "y": 515.800938086304
+                            },
+                            "under_lip": {
+                                "bottom": {
+                                    "x": 433.5416510318949,
+                                    "y": 529.0840525328331
+                                },
+                                "top": {
+                                    "x": 434.1818011257036,
+                                    "y": 512.2801125703566
+                                }
+                            },
+                            "upper_lip": {
+                                "bottom": {
+                                    "x": 435.94221388367725,
+                                    "y": 506.9988742964353
+                                },
+                                "top": {
+                                    "x": 436.26228893058163,
+                                    "y": 492.11538461538464
+                                }
+                            }
+                        },
+                        "eyebrow": {
+                            "left_outer": {
+                                "x": 351.6024390243902,
+                                "y": 385.850469043152
+                            },
+                            "left_inner": {
+                                "x": 415.61744840525324,
+                                "y": 383.1298311444653
+                            },
+                            "right_inner": {
+                                "x": 456.74709193245775,
+                                "y": 387.13076923076926
+                            },
+                            "right_outer": {
+                                "x": 495.63621013133206,
+                                "y": 391.4517823639775
+                            }
+                        },
+                        "eye": {
+                            "left_outer": {
+                                "x": 372.7273921200751,
+                                "y": 409.0559099437148
+                            },
+                            "left_top": {
+                                "x": 390.6515947467167,
+                                "y": 401.21407129455906
+                            },
+                            "left_bottom": {
+                                "x": 388.7311444652908,
+                                "y": 416.57767354596626
+                            },
+                            "left_inner": {
+                                "x": 404.8949343339587,
+                                "y": 412.25666041275804
+                            },
+                            "right_inner": {
+                                "x": 456.2669793621013,
+                                "y": 417.85797373358355
+                            },
+                            "right_top": {
+                                "x": 469.87016885553476,
+                                "y": 409.8560975609756
+                            },
+                            "right_bottom": {
+                                "x": 471.15046904315193,
+                                "y": 424.5795497185741
+                            },
+                            "right_outer": {
+                                "x": 483.95347091932456,
+                                "y": 418.3380863039399
+                            },
+                            "left_pupil": {
+                                "x": 393.5322701688555,
+                                "y": 407.7756097560976
+                            },
+                            "right_pupil": {
+                                "x": 473.0709193245779,
+                                "y": 415.77748592870546
+                            }
+                        },
+                        "nose": {
+                            "tip": {
+                                "x": 442.34371482176357,
+                                "y": 451.94596622889304
+                            },
+                            "root_left": {
+                                "x": 421.37879924953097,
+                                "y": 414.4971857410882
+                            },
+                            "root_right": {
+                                "x": 447.9450281425891,
+                                "y": 415.61744840525324
+                            },
+                            "left_alar_top": {
+                                "x": 419.4583489681051,
+                                "y": 443.784052532833
+                            },
+                            "right_alar_top": {
+                                "x": 454.0264540337711,
+                                "y": 443.784052532833
+                            },
+                            "left_alar_out_tip": {
+                                "x": 408.255722326454,
+                                "y": 462.66848030018764
+                            },
+                            "right_alar_out_tip": {
+                                "x": 459.3076923076923,
+                                "y": 463.62870544090055
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

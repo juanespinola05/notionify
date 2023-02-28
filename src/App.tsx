@@ -1,23 +1,11 @@
 import { ReactElement } from 'react'
-import SvgCanvas from './components/SvgCanvas'
-import { PersonDetails } from './types'
-import { mapDetailsToSvg } from './utils/mapDetailsToSvg'
+import Dropper from './components/Dropper'
 
 function App (): ReactElement {
-  const details: PersonDetails = {
-    emotion: 'anger',
-    gender: 'female',
-    glasses: 'no_glasses',
-    facial_hair: 'none',
-    head: 'female_large'
-  }
-
-  const svgToRender = mapDetailsToSvg(details)
-
   return (
-    <div>
+    <div className='h-screen'>
       <h1>Notion Avatar Generator</h1>
-      <SvgCanvas svgList={svgToRender} />
+      <Dropper />
     </div>
   )
 }
