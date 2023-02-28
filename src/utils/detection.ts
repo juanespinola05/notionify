@@ -18,10 +18,10 @@ export const getGlasses = (glass: GlassesResponse = 'NoGlasses'): string => GLAS
 function getTypeOfHair (baldPercentage: number): HairType {
   const percentage = Math.round(baldPercentage * 100)
 
-  if (percentage === 0) return 'bald'
-  if (percentage > 0 && percentage < 7) return 'large'
+  if (percentage >= 0 && percentage < 7) return 'large'
   if (percentage >= 7 && percentage < 14) return 'cut'
-  if (percentage >= 14 && percentage < 50) return 'medium'
+  if (percentage >= 14 && percentage < 66) return 'medium'
+  if (percentage >= 66 && percentage <= 100) return 'bald'
 
   return 'medium'
 }

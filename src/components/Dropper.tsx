@@ -13,13 +13,15 @@ export default function Dropper (): ReactElement {
   }
 
   return (
-    <Dropzone onDrop={handleDrop}>
-      {({ getRootProps, getInputProps }) => (
-        <div {...getRootProps()}>
-          <input {...getInputProps()} />
-          <p>Drag 'n' drop some files here, or click to select files</p>
-        </div>
-      )}
-    </Dropzone>
+    <div className='bg-slate-300 border-sky-100 border-solid grid gap-10'>
+      <Dropzone onDrop={handleDrop}>
+        {({ getRootProps, getInputProps }) => (
+          <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            <p>Drag 'n' drop some files here, or click to select files</p>
+          </div>
+        )}
+      </Dropzone>
+    </div>
   )
 }
