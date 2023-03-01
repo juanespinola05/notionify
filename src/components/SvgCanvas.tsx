@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import useCanvas from '../hooks/useCanvas'
+import useAvatarCanvas from '../hooks/useAvatarCanvas'
 // import SvgLayer from './SvgLayer'
 
 interface IProps {
@@ -7,7 +7,7 @@ interface IProps {
 }
 
 function SvgCanvas ({ svgList }: IProps): ReactElement {
-  const canvasRef = useCanvas(svgList)
+  const canvasRef = useAvatarCanvas(svgList)
 
   return (
     <canvas ref={canvasRef} width='306' height='306' />
