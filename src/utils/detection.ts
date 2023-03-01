@@ -39,8 +39,11 @@ export function getHead (headObject: HeadData): HeadResponse {
 }
 
 export function getFacialHair (facialHairObject: FacialHairData): string {
-  return Object.entries(facialHairObject)
-    .map(([hairStyle, percentage]) => Math.round(percentage * 100) >= 40 && hairStyle)
+  const facialHairCategory = Object.entries(facialHairObject)
+    .sort(([hairStyleA], [hairStyleB]) => hairStyleA.localeCompare(hairStyleB))
+    .map(([hairStyle, percentage]) => Math.round(percentage * 100) >= 60 && hairStyle)
     .filter(Boolean)
     .join('_')
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  return facialHairCategory || 'none'
 }
