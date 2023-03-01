@@ -51,7 +51,7 @@ const svgList: SvgListType = {
     beard_sideburns: [
       ['beard_2.svg']
     ],
-    beard_siderburs_moustache: [
+    beard_moustache_sideburns: [
       ['beard_3.svg']
     ],
     moustache: [
@@ -76,9 +76,7 @@ const svgList: SvgListType = {
     female: [
       ['head_4.svg'],
       ['head_5.svg'],
-      ['head_6.svg'],
-      ['head_7.svg'],
-      ['head_8.svg']
+      ['head_6.svg']
     ]
   },
   head: {
@@ -94,16 +92,12 @@ const svgList: SvgListType = {
       ['hair_19.svg'],
       ['hair_20.svg'],
       ['hair_28.svg'],
-      ['hair_29.svg'],
-      ['hair_30.svg']
+      ['hair_29.svg']
     ],
     female_medium: [
-      ['hair_11.svg'],
       ['hair_31.svg'],
       ['hair_21.svg'],
-      ['hair_32.svg'],
-      ['hair_6.svg'],
-      ['hair_9.svg']
+      ['hair_32.svg']
     ],
     male_bald: [
       [],
@@ -120,12 +114,10 @@ const svgList: SvgListType = {
       ['hair_26.svg']
     ],
     male_cut_cap: [
-      ['cap.svg', 'hair_23.svg']
+      ['hair_23.svg', 'cap.svg']
     ],
     male_large: [
-      ['hair_5.svg'],
-      ['hair_7.svg'],
-      ['hair_16.svg']
+      ['hair_29.svg']
     ],
     male_large_cap: [
       ['hair_5.svg', 'cap.svg']
@@ -134,18 +126,12 @@ const svgList: SvgListType = {
       ['hair_2.svg'],
       ['hair_4.svg'],
       ['hair_8.svg'],
-      ['hair_10.svg'],
       ['hair_12.svg'],
-      ['hair_14.svg'],
-      ['hair_15.svg'],
-      ['hair_17.svg'],
       ['hair_18.svg'],
-      ['hair_22.svg'],
-      ['hair_25.svg']
-
+      ['hair_22.svg']
     ],
     male_medium_cap: [
-      ['hair_10.svg', 'cap.svg']
+      ['hair_23.svg', 'cap.svg']
     ]
   }
 }
