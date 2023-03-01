@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { promises } from 'node:fs'
 import { resolve } from 'node:path'
 
