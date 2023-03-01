@@ -10,7 +10,7 @@ export function mapDetailsToSvg (details: Partial<PersonDetails>): string[] {
   const avatarSvgs = entries.flatMap(([key, value]) => {
     const detail = svgList[key as keyof typeof svgList]
 
-    return getRandomCombination(detail[value as keyof typeof detail])
+    return getRandomCombination(detail[value as keyof typeof detail]) ?? []
   })
 
   avatarSvgs.sort((a) => a.includes('cap') ? -1 : 1)
