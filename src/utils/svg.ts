@@ -10,10 +10,21 @@ export function mapDetailsToSvg (details: Partial<PersonDetails>): string[] {
   const avatarSvgs = entries.flatMap(([key, value]) => {
     const detail = svgList[key as keyof typeof svgList]
 
-    return getRandomCombination(detail[value as keyof typeof detail])
+    return getRandomCombination(detail[value as keyof typeof detail]) ?? []
   })
 
   avatarSvgs.sort((a) => a.includes('cap') ? -1 : 1)
   avatarSvgs.sort((a) => a.includes('head') ? -1 : 1)
   return avatarSvgs
+}
+
+export async function fetchSvg (svgList: string[]): Promise<string[]> {
+  const strings = await Promise.all(
+    svgList
+      .map(async svg => {
+        return await fetch(`./svgs/${svg}`).then(async res => await res.text())
+      })
+  )
+
+  return strings
 }
