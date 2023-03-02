@@ -48,3 +48,24 @@ export interface SvgListType {
   facial_hair: Record<PersonDetails['facial_hair'], ListOfOptions>
   head: Record<PersonDetails['head'], ListOfOptions>
 }
+
+// BETAFACE API types
+
+export type HeadInitialCategory = 'cut' | 'large'
+
+export type HeadCategory = 'bald' | 'bald_short' | 'male_cut_wavy' | 'male_cut_average_thick' | 'male_cut_average_average' | 'male_cut_thin_thin' | 'male_cut_thick_thick' | 'male_cut_receding' | 'male_large' | 'female_large'
+
+export interface BetaFaceAPITag {
+  name: string
+  value: string
+  confidence: number
+}
+
+export interface HeadDataBetaFaceAPI {
+  face: {
+    tags: BetaFaceAPITag[]
+  }
+  gender: PersonDetails['gender']
+}
+
+export type HairLengthValue = 'none' | 'short' | 'very short' | 'average' | 'long' | 'very long'
