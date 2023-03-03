@@ -80,58 +80,67 @@ const svgList: SvgListType = {
     ]
   },
   head: {
-    female_bald: [
-      [],
-      ['hair_23.svg']
-    ],
-    female_cap: [
+    bald: [
       []
     ],
     female_large: [
+      ['hair_3.svg'],
       ['hair_6.svg'],
+      ['hair_9.svg'],
       ['hair_19.svg'],
       ['hair_20.svg'],
-      ['hair_28.svg'],
-      ['hair_29.svg']
-    ],
-    female_medium: [
-      ['hair_31.svg'],
       ['hair_21.svg'],
+      ['hair_27.svg'],
+      ['hair_28.svg'],
+      ['hair_29.svg'],
+      ['hair_30.svg'],
+      ['hair_31.svg'],
       ['hair_32.svg']
     ],
-    male_bald: [
-      [],
+    bald_short: [
       ['hair_23.svg']
     ],
-    male_bald_cap: [
-      ['hair_23.svg', 'cap.svg'],
-      ['cap.svg']
-    ],
-    male_cut: [
-      ['hair_1.svg'],
-      ['hair_23.svg'],
-      ['hair_24.svg'],
-      ['hair_26.svg']
-    ],
-    male_cut_cap: [
-      ['hair_23.svg', 'cap.svg']
-    ],
     male_large: [
-      ['hair_29.svg']
+      ['hair_29.svg'],
+      ['hair_16.svg']
     ],
-    male_large_cap: [
-      ['hair_5.svg', 'cap.svg']
-    ],
-    male_medium: [
-      ['hair_2.svg'],
+    male_cut_average_thick: [
       ['hair_4.svg'],
       ['hair_8.svg'],
       ['hair_12.svg'],
-      ['hair_18.svg'],
-      ['hair_22.svg']
+      ['hair_18.svg']
     ],
-    male_medium_cap: [
-      ['hair_23.svg', 'cap.svg']
+    male_cut_average_average: [
+      ['hair_17.svg'],
+      ['hair_14.svg'],
+      ['hair_25.svg']
+    ],
+    male_cut_receding: [
+      ['hair_4.svg'],
+      ['hair_12.svg'],
+      ['hair_15.svg'],
+      ['hair_24.svg'],
+      ['hair_25.svg']
+    ],
+    male_cut_thick_thick: [
+      ['hair_22.svg'],
+      ['hair_2.svg']
+    ],
+    male_cut_thin_thin: [
+      ['hair_1.svg'],
+      ['hair_10.svg'],
+      ['hair_23.svg'],
+      ['hair_24.svg']
+    ],
+    male_cut_wavy: [
+      ['hair_22.svg'],
+      ['hair_2.svg']
+    ],
+    default: [
+      ['hair_4.svg'],
+      ['hair_8.svg'],
+      ['hair_12.svg'],
+      ['hair_18.svg']
     ]
   }
 }

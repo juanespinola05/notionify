@@ -1,18 +1,24 @@
 import { ReactElement, useEffect, useState } from 'react'
 import Dropzone from 'react-dropzone'
-import { uploadImage } from '../utils/upload'
+import { uploadImage, fetchBetaFace } from '../utils/upload'
 import { useDetection } from '../hooks/useDetection'
 import SvgCanvas from './SvgCanvas'
 import { mapDetailsToSvg } from '../utils/svg'
+import { CloudinaryDetectionResponse } from '../types'
 
 export default function Dropper (): ReactElement {
   const { detection, setDetection } = useDetection()
+  console.log('🚀 detection:', detection)
   const [svgList, setSvgList] = useState<string[]>([])
+
+  let clodinaryResponse: CloudinaryDetectionResponse
 
   function handleDrop (droppedFile: any): void {
     uploadImage(droppedFile[0])
-      .then((response) => setDetection(response))
-      .then(() => {
+      .then(async (response) => { clodinaryResponse = response; return await fetchBetaFace(response.url) })
+      .then((data) => {
+        console.log('🚀 BetaFace API:', data)
+        setDetection(clodinaryResponse, data.media.faces.at(0))
         const foo = mapDetailsToSvg(detection)
         setSvgList(foo)
       })
