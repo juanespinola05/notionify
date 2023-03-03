@@ -53,7 +53,7 @@ export interface SvgListType {
 
 export type HeadInitialCategory = 'cut' | 'large'
 
-export type HeadCategory = 'bald' | 'bald_short' | 'male_cut_wavy' | 'male_cut_average_thick' | 'male_cut_average_average' | 'male_cut_thin_thin' | 'male_cut_thick_thick' | 'male_cut_receding' | 'male_large' | 'female_large'
+export type HeadCategory = 'bald' | 'bald_short' | 'male_cut_wavy' | 'male_cut_average_thick' | 'male_cut_average_average' | 'male_cut_thin_thin' | 'male_cut_thick_thick' | 'male_cut_receding' | 'male_large' | 'female_large' | 'default'
 
 export interface BetaFaceAPITag {
   name: string

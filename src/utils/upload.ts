@@ -18,3 +18,23 @@ export async function uploadImage (file: any): Promise<void> {
     .then(async response => await response.json())
     .then((res) => res).catch((err) => console.log(err))
 }
+
+export async function fetchBetaFace (imageUrl: string = 'http://betafaceapi.com/api_examples/sample.png'): Promise<void> {
+  return await fetch('https://www.betafaceapi.com/api/v2/media', {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      api_key: 'd45fd466-51e2-4701-8da8-04351c872236',
+      file_uri: imageUrl,
+      detection_flags: 'basicpoints,propoints,classifiers,content,extended',
+      recognize_targets: ['all@mynamespace'],
+      original_filename: 'sample.png'
+    })
+  })
+    .then(async (response) => await response.json())
+    .then(data => data)
+    .catch((error) => console.log(error))
+}
