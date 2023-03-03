@@ -1,17 +1,34 @@
 import { ReactElement } from 'react'
-import SvgLayer from './SvgLayer'
+import useAvatarCanvas from '../hooks/useAvatarCanvas'
 
 interface IProps {
   svgList: string[]
+  width?: number
+  height?: number
 }
 
-function SvgCanvas ({ svgList }: IProps): ReactElement {
+function SvgCanvas ({ svgList, width = 306, height = 306 }: IProps): ReactElement {
+  const { canvasRef, downloadUrl, ready, loading } = useAvatarCanvas(svgList)
+
   return (
-    <div className='relative w-60 h-60'>
+    <>
+      {loading && <p>Loading..</p>}
+      <canvas
+        ref={canvasRef}
+        width={width}
+        height={height}
+      />
       {
-        svgList.map(svg => <SvgLayer svg={svg} key={svg} />)
+        ready && (
+          <a
+            href={downloadUrl}
+            download='avatar' className='block px-4 py-2 bg-blue-800 text-white'
+          >
+            Descargar Avatar
+          </a>
+        )
       }
-    </div>
+    </>
   )
 }
 
