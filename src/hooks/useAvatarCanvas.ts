@@ -29,25 +29,28 @@ export default function useAvatarCanvas (svgList: string[]): AvatarCanvas {
     // reset canvas to avoid conflicts
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
+    // TODO: a veces algunos elementos cargan más rápido que otros y se pintan en un orden distinto al esperado.
+    // Iterate SVGs and add them to canvas
     svgStrings.forEach((string, index) => {
-      const finalSVG = string
-      // if (index === 0) finalSVG = string.replace(/currentColor/g, '%23713F12')
       const img = new Image()
+      // if its PNG, use the direct URL, otherwise use data64 XML
+      img.src = string.split('.')[1] === 'png'
+        ? `./svgs/${string}`
+        : `data:image/svg+xml;charset=utf-8, ${string}`
       img.onload = () => {
-        ctx.drawImage(img, 0, 0)
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
       }
-      img.src = `data:image/svg+xml;charset=utf-8, ${finalSVG}`
     })
     // TODO: Fix this to not use interval
     setTimeout(() => {
       setDownloadUrl(canvas.toDataURL(IMAGE_DOWNLOAD_FORMAT))
-    }, 500)
+    }, 700)
   }, [svgStrings])
 
   return {
     canvasRef,
     loading,
     downloadUrl,
-    ready: svgStrings.length > 0
+    ready: svgList.length > 0
   }
 }
