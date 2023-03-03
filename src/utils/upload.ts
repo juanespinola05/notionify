@@ -1,4 +1,4 @@
-import { ENVIRONMENT } from '../constants'
+import { ENVIRONMENT } from '../constants/environment'
 
 const { API_BASE_URL, CLOUD_NAME, PRESET_ID } = ENVIRONMENT
 
@@ -6,7 +6,7 @@ export async function uploadImage (file: any): Promise<void> {
   const formData = new FormData()
   formData.append('file', file)
   formData.append('upload_preset', PRESET_ID)
-  formData.append('timestamp', Date.now() / 1000)
+  formData.append('timestamp', `${Date.now() / 1000}`)
 
   const UPLOAD_IMAGE_URL = `${API_BASE_URL}/${CLOUD_NAME}/image/upload`
   const fetchConfig = {
