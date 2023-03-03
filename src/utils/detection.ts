@@ -1,4 +1,4 @@
-import { GlassesResponse, HairType, HeadData, HeadResponse, FacialHairData } from '../types'
+import { GlassesResponse, HairType, HeadResponse, FacialHairData, CloudinaryEntryAttributes, EmotionsType } from '../types'
 
 const GLASSES_MAP: Record<GlassesResponse, string> = {
   NoGlasses: 'no_glasses',
@@ -6,9 +6,9 @@ const GLASSES_MAP: Record<GlassesResponse, string> = {
   Sunglasses: 'sunglasses'
 }
 
-export function getHighestEmotion (emotionObject: Record<string, number>): string {
+export function getHighestEmotion (emotionObject: Record<EmotionsType, number>): string {
   const highestEmotionValue = Math.max.apply(null, Object.values(emotionObject))
-  const highestEmotion = Object.keys(emotionObject).find(emotion => emotionObject[emotion] === highestEmotionValue)
+  const highestEmotion = Object.keys(emotionObject).find(emotion => emotionObject[emotion as EmotionsType] === highestEmotionValue)
 
   return highestEmotion ?? 'neutral'
 }
@@ -26,7 +26,8 @@ function getTypeOfHair (baldPercentage: number): HairType {
   return 'medium'
 }
 
-export function getHead (headObject: HeadData): HeadResponse {
+// ! This function should not be used
+export function getHead (headObject: CloudinaryEntryAttributes): HeadResponse {
   const hasHeadwear = headObject.accessories.some((accessory) => accessory.type === 'headwear')
   const hasHat = headObject.hair.invisible || hasHeadwear
 
@@ -44,6 +45,5 @@ export function getFacialHair (facialHairObject: FacialHairData): string {
     .map(([hairStyle, percentage]) => Math.round(percentage * 100) >= 60 && hairStyle)
     .filter(Boolean)
     .join('_')
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-  return facialHairCategory || 'none'
+  return facialHairCategory === '' ? 'none' : facialHairCategory
 }

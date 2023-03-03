@@ -1,11 +1,32 @@
-// type EmotionsType = 'anger' | 'contempt' | 'disgust' | 'fear' | 'happiness' | 'neutral' | 'sadness' | 'surprise'
-
+export type EmotionsType = 'anger' | 'contempt' | 'disgust' | 'fear' | 'happiness' | 'neutral' | 'sadness' | 'surprise'
+type GenderType = 'female' | 'male'
 export interface PersonDetails {
-  gender: 'female' | 'male'
-  emotion: 'anger' | 'contempt' | 'disgust' | 'fear' | 'happiness' | 'neutral' | 'sadness' | 'surprise'
+  gender: GenderType
+  emotion: EmotionsType
   glasses: 'no_glasses' | 'reading_glasses' | 'sunglasses'
-  head: 'female_cap' | 'male_medium' | 'male_cut' | 'male_bald' | 'male_large' | 'female_medium' | 'female_large' | 'female_bald' | 'male_cut_cap' | 'male_medium_cap' | 'male_bald_cap' | 'male_large_cap'
+  head: HeadCategory
   facial_hair: 'beard' | 'beard_sideburns' | 'beard_moustache_sideburns' | 'beard_moustache' | 'moustache' | 'none'
+}
+
+interface CloudinaryPersonEntries {
+  attributes: CloudinaryEntryAttributes
+}
+export interface CloudinaryEntryAttributes {
+  gender: GenderType
+  emotion: Record<EmotionsType, number>
+  glasses: GlassesResponse
+  facial_hair: FacialHairData
+  accessories: AccessoriesData[]
+  hair: HairData
+}
+export interface CloudinaryDetectionResponse {
+  info: {
+    detection: {
+      adv_face: {
+        data: CloudinaryPersonEntries[]
+      }
+    }
+  }
 }
 
 export type GlassesResponse = 'NoGlasses' | 'ReadingGlasses' | 'Sunglasses'
@@ -65,7 +86,7 @@ export interface HeadDataBetaFaceAPI {
   face: {
     tags: BetaFaceAPITag[]
   }
-  gender: PersonDetails['gender']
+  gender: GenderType
 }
 
 export type HairLengthValue = 'none' | 'short' | 'very short' | 'average' | 'long' | 'very long'

@@ -4,13 +4,14 @@ import { uploadImage, fetchBetaFace } from '../utils/upload'
 import { useDetection } from '../hooks/useDetection'
 import SvgCanvas from './SvgCanvas'
 import { mapDetailsToSvg } from '../utils/mapDetailsToSvg'
+import { CloudinaryDetectionResponse } from '../types'
 
 export default function Dropper (): ReactElement {
   const { detection, setDetection } = useDetection()
   console.log('🚀 detection:', detection)
   const [svgList, setSvgList] = useState<string[]>([])
 
-  let clodinaryResponse: any
+  let clodinaryResponse: CloudinaryDetectionResponse
 
   function handleDrop (droppedFile: any): void {
     uploadImage(droppedFile[0])

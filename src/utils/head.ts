@@ -1,7 +1,7 @@
 import { HeadCategory, HeadDataBetaFaceAPI, BetaFaceAPITag, HairLengthValue, HeadInitialCategory } from '../types'
 import { getCutHairStyle } from './hairstyle'
 
-const findTag = (targetTag: string, tags: any): any => tags.find((tag: any) => tag.name === targetTag)?.value
+const findTag = (targetTag: string, tags: BetaFaceAPITag[]): string | undefined => tags.find((tag) => tag.name === targetTag)?.value
 
 export function getHead ({ face, gender }: HeadDataBetaFaceAPI): HeadCategory {
   console.log('🚀 ~ file: head.ts:7 ~ face:', face)
