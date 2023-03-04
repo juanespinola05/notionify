@@ -8,26 +8,29 @@ interface IProps {
 }
 
 function SvgCanvas ({ svgList, width = 306, height = 306 }: IProps): ReactElement {
-  const { canvasRef, downloadUrl, ready, loading } = useAvatarCanvas(svgList)
+  const { svgToRender, handleDownload } = useAvatarCanvas(svgList)
 
   return (
     <>
-      {loading && <p>Loading..</p>}
-      <canvas
-        ref={canvasRef}
-        width={width}
-        height={height}
-      />
-      {
-        ready && (
-          <a
-            href={downloadUrl}
-            download='avatar' className='block px-4 py-2 bg-blue-800 text-white'
-          >
-            Descargar Avatar
-          </a>
-        )
-      }
+      <div className='relative w-[320px] h-[320px]'>
+        {
+          svgToRender.map((Svg, index) => {
+            // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+            if (!Svg) return null
+            return (
+              <div key={index} className='top-0 absolute w-full h-full'>
+                <Svg />
+              </div>
+            )
+          })
+        }
+      </div>
+      <button
+        onClick={handleDownload}
+        className='block px-4 py-2 bg-blue-800 text-white'
+      >
+        Descargar Avatar
+      </button>
     </>
   )
 }
