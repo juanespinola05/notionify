@@ -1,12 +1,15 @@
 import { ReactElement } from 'react'
-import Dropper from './components/Dropper'
+import Section from './layout/Section'
+import SectionCreator from './sections/Creator'
+import Hero from './sections/Hero'
 
 function App (): ReactElement {
   return (
-    <div className='h-screen'>
-      <h1>Notion Avatar Generator</h1>
-      <Dropper />
-    </div>
+    <main className='grid gap-4'>
+      <Hero />
+      <SectionCreator />
+      <Section className='w-full bg-gray-200' />
+    </main>
   )
 }
 
