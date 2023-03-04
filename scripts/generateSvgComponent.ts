@@ -1,5 +1,7 @@
 import { promises } from 'node:fs'
 import { resolve } from 'node:path'
+import { transform } from 'npm:@svgr/core'
+// import { transform } from '@svgr/core'
 
 const SVG_PATH = resolve('public', 'svgs')
 const SVG_COMPONENTS = resolve('.', 'src', 'components', 'SVG.tsx')
@@ -8,7 +10,7 @@ const SvgComponentsBaseFile = (entries: string): string => `// DO NOT EDIT. This
 // This file is automatically updated
 import { FC } from 'react'
 
-export const svgComponents: Record<string, FC> = {
+export const svgComponents: Record<string, FC<any>> = {
   ${entries}
 }
 `
@@ -26,7 +28,19 @@ for (const svgFile of svgFiles) {
   const svgFileContent = (await promises.readFile(resolve(SVG_PATH, svgFile)))
     .toString()
     .replaceAll(/\n/mg, '')
-  const newEntry = `'${name}': () => ${svgFileContent}`
+  const svgrComponent: string = await transform(svgFileContent, {
+    jsxRuntime: 'automatic'
+  }, {
+    componentName: name
+  })
+  const exportStartIndex = svgrComponent.indexOf('export default')
+  const component = svgrComponent.slice(0, exportStartIndex)
+  const fcStartIndex = component.indexOf('props')
+  const fc = component.slice(fcStartIndex, component.length)
+    .replaceAll('\n', ' ')
+    .replaceAll(';', '')
+
+  const newEntry = `'${name}': ${fc}`
   svgEntries.push(newEntry)
 }
 
