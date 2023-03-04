@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "generate-svg": "deno run -A scripts/generateSvgComponent.ts && deno fmt src/components/SVG.tsx --options-single-quote=true --options-no-semicolons=true"
+    "generate-svg": "deno run -A scripts/generateSvgComponent.ts"
   },
   "dependencies": {
     "react": "^18.2.0",
