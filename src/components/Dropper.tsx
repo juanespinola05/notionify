@@ -1,44 +1,83 @@
-import { ReactElement, useEffect, useState } from 'react'
-import Dropzone from 'react-dropzone'
-import { uploadImage, fetchBetaFace } from '../utils/upload'
-import { useDetection } from '../hooks/useDetection'
-import SvgCanvas from './SvgCanvas'
-import { mapDetailsToSvg } from '../utils/svg'
-import { CloudinaryDetectionResponse } from '../types'
+import { ReactElement, useCallback, useState } from 'react'
+import { useDropzone } from 'react-dropzone'
 
-export default function Dropper (): ReactElement {
-  const { detection, setDetection } = useDetection()
-  console.log('🚀 detection:', detection)
-  const [svgList, setSvgList] = useState<string[]>([])
+interface DropperProps {
+  handleDrop: () => Promise<void>
+  isLoading?: boolean
+}
 
-  let clodinaryResponse: CloudinaryDetectionResponse
+const DROPPER_LOADING_TEXT_LIST = ['Extrayendo archivo...', 'Leyendo documentos...', 'Generando analisis...', 'Banca un toque...']
 
-  function handleDrop (droppedFile: any): void {
-    uploadImage(droppedFile[0])
-      .then(async (response) => { clodinaryResponse = response; return await fetchBetaFace(response.url) })
-      .then((data) => {
-        console.log('🚀 BetaFace API:', data)
-        setDetection(clodinaryResponse, data.media.faces.at(0))
-        const foo = mapDetailsToSvg(detection)
-        setSvgList(foo)
-      })
-      .catch(err => console.log(err))
+export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const onDrop = useCallback(acceptedFiles => {
+    setIsLoading(true)
+    handleDrop().finally(() => setIsLoading(false))
+  }, [])
+  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({ onDrop })
+
+  const Loader = () => {
+    const images = [1, 2, 3, 4]
+
+    return (
+      <div className='relative w-64 h-6w-64'>
+        {images.map((image) => {
+          return <img key={image} className='w-full h-full animated absolute' src={`src/assets/${image}.svg`} alt='' />
+        })}
+        {/* <img className='w-full h-full absolute animated' src='src/assets/2.svg' alt='' />
+        <img className='w-full h-full absolute animated' src='src/assets/3.svg' alt='' />
+        <img className='w-full h-full absolute animated' src='src/assets/4.svg' alt='' /> */}
+      </div>
+    )
+  }
+
+  const TextLoader = () => {
+    return (
+      <div className='w-full h-8 relative bg-blue-50 overflow-hidden'>
+        {
+          DROPPER_LOADING_TEXT_LIST.map((text) => (
+            <p className='text-red-700 text-center line-up absolute' key={text}>{text}</p>
+          ))
+
+        }
+      </div>
+    )
   }
 
   return (
-    <div className='bg-slate-300 border-sky-100 border-solid grid gap-10'>
-      <Dropzone onDrop={handleDrop}>
-        {({ getRootProps, getInputProps }) => (
-          <div {...getRootProps()}>
-            <input {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
-          </div>
-        )}
-      </Dropzone>
-      <SvgCanvas svgList={svgList} />
-      <button onClick={() => setSvgList(mapDetailsToSvg(detection))}>
-        Regenerar
-      </button>
+    <div className='grid gap-4 place-items-center'>
+      <div {...getRootProps()} className='transition-all w-64 h-64 rounded-full grid place-items-center'>
+        <input {...getInputProps()} />
+
+        {
+          isLoading
+            ? <Loader />
+            : <img src='src/assets/1.svg' alt='' className={`w-full h-full opacity-30  ${isDragActive ? 'opacity-80' : ''}`} />
+        }
+      </div>
+
+      {
+            isLoading
+              ? <TextLoader />
+              : (
+                <div className={`grid gap-3 place-items-center text-gray-400  transition-all ${isDragActive ? 'text-gray-800' : ''}`}>
+                  <p className='flex flex-col items-center'>
+                    {isDragActive ? 'Drop' : 'Drag'} your image here to start
+                    <span className='text-sm font-medium'>(must be a single person)</span>
+                  </p>
+
+                  <div className='w-full justify-center flex gap-4 text-current items-center max-w-xs'>
+                    <div className='border-t-2 w-16 border-current' />
+                    or
+                    <div className='border-t-2 w-16 border-current' />
+                  </div>
+
+                  <button onClick={() => open()} className='w-28 bg-gray-800 py-1.5 px-4 text-white rounded-lg hover:outline-2 hover:outline-double hover:outline-slate-600'>Browse file</button>
+                </div>
+                )
+          }
+      <TextLoader />
     </div>
   )
 }
