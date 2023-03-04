@@ -1,8 +1,15 @@
 import { ENVIRONMENT } from '../constants/environment'
+import cloudinaryMockResponse from '../../detectionObjectMock.json'
+import betaFaceMockResponse from '../../detectionObjectMockBetaFace.json'
+import { CloudinaryDetectionResponse } from '../types'
 
-const { API_BASE_URL, CLOUD_NAME, PRESET_ID } = ENVIRONMENT
+const { API_BASE_URL, CLOUD_NAME, PRESET_ID, NODE_ENV } = ENVIRONMENT
 
-export async function uploadImage (file: any): Promise<void> {
+const isProduction = NODE_ENV === 'production'
+
+export async function uploadImage (file: any): Promise<CloudinaryDetectionResponse> {
+  // @ts-expect-error
+  if (!isProduction) return cloudinaryMockResponse
   const formData = new FormData()
   formData.append('file', file)
   formData.append('upload_preset', PRESET_ID)
@@ -19,7 +26,9 @@ export async function uploadImage (file: any): Promise<void> {
     .then((res) => res).catch((err) => console.log(err))
 }
 
-export async function fetchBetaFace (imageUrl: string = 'http://betafaceapi.com/api_examples/sample.png'): Promise<void> {
+export async function fetchBetaFace (imageUrl: string = 'http://betafaceapi.com/api_examples/sample.png'): Promise<CloudinaryDetectionResponse> {
+  // @ts-expect-error
+  if (NODE_ENV === 'development') return betaFaceMockResponse
   return await fetch('https://www.betafaceapi.com/api/v2/media', {
     method: 'POST',
     headers: {
