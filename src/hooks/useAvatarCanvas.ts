@@ -1,23 +1,33 @@
 import { FC, useEffect, useState } from 'react'
 import { svgComponents } from '../components/SVG'
 
+const outfitEntries = Object.entries(svgComponents).filter(([key]) => key.includes('outfit'))
+const outfitKeys = outfitEntries.map(([key]) => key)
+
 // const IMAGE_DOWNLOAD_FORMAT = 'image/png'
 const BACKGROUND_SVG = 'background'
-const backgroundComponent = svgComponents[BACKGROUND_SVG]
 interface AvatarCanvas {
   downloadUrl: string | undefined
   svgToRender: FC[]
   handleDownload: () => void
   toggleBackground: () => void
   hasBackground: boolean
+  outfitOptions: string[]
+  outfitSelection: string
+  changeSelection: (str: string) => void
 }
 
 export default function useAvatarCanvas (svgList: string[]): AvatarCanvas {
   const [downloadUrl, setDownloadUrl] = useState('')
   const [svgToRender, setSvgToRender] = useState<FC[]>([])
   const [background, setBackground] = useState(true)
+  const [outfitSelection, setOutfitSelection] = useState<string>(outfitKeys[0])
 
   const toggleBackground = (): void => setBackground(prev => !prev)
+
+  const changeSelection: AvatarCanvas['changeSelection'] = (newSelection) => {
+    setOutfitSelection(newSelection)
+  }
 
   const handleDownload = (): void => {
     const anchor = document.createElement('a')
@@ -33,23 +43,29 @@ export default function useAvatarCanvas (svgList: string[]): AvatarCanvas {
 
   useEffect(() => {
     const svgNames = svgList.map(str => str.split('.')[0])
-    const svgToRender = svgNames.map(name => svgComponents[name])
-    if (background && svgNames.length > 0) svgToRender.splice(0, 0, backgroundComponent)
-    else if (!background && svgToRender[0].name === BACKGROUND_SVG) {
-      svgToRender.splice(0, 1)
+
+    if (background && svgNames.length > 0) svgNames.splice(0, 0, BACKGROUND_SVG)
+    else if (!background && svgNames[1] === BACKGROUND_SVG) {
+      svgNames.splice(1, 1)
     }
+
+    svgNames.splice(0, 0, outfitSelection)
+    const svgToRender = svgNames.map(name => svgComponents[name])
 
     setSvgToRender(svgToRender)
 
     const url = `https://notion-avatar.deno.dev?layers=${svgNames.join(';')}`
     setDownloadUrl(url)
-  }, [svgList, background])
+  }, [svgList, background, outfitSelection])
 
   return {
     downloadUrl,
     svgToRender,
     handleDownload,
     toggleBackground,
-    hasBackground: background
+    changeSelection,
+    outfitSelection,
+    hasBackground: background,
+    outfitOptions: outfitKeys
   }
 }
