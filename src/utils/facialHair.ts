@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BetaFaceAPITag } from '../types'
 import { findTag } from './head'
 
@@ -9,7 +8,6 @@ export function getFacialHairBeta (tags: BetaFaceAPITag[]): string {
   const mustacheLength = findTag('hair mustache', tags) ?? 'none'
   const beardLength = findTag('hair beard', tags) ?? 'none'
   const facialHairCategory = []
-  console.log('values', { hasMustache, hasBeard, hasSideburns, mustacheLength, beardLength })
 
   if (hasBeard) {
     if (beardLength !== 'thick') facialHairCategory.push('beard_short')
@@ -20,6 +18,5 @@ export function getFacialHairBeta (tags: BetaFaceAPITag[]): string {
     else facialHairCategory.push('mustache')
   }
   if (hasSideburns) facialHairCategory.push('sideburns')
-  console.log('🚀 ~ file: facialHair.ts:23 ~ getFacialHairBeta ~ facialHairCategory:', facialHairCategory)
   return facialHairCategory.join('_')
 }
