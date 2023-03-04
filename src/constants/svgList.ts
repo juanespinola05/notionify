@@ -43,40 +43,40 @@ const svgList: SvgListType = {
   },
   facial_hair: {
     beard: [
-      ['3_beard.svg']
+      ['3_beard.png', '4_moustache_white.svg']
     ],
     beard_short: [
-      ['3_beard_short.svg']
+      ['3_beard_short.png', '4_moustache_white.svg']
     ],
     beard_mustache: [
-      ['3_beard.svg', '4_mustache.png']
+      ['3_beard.png', '4_mustache.png']
     ],
     beard_mustache_short: [
-      ['3_beard.svg', '4_mustache_short.png']
+      ['3_beard.png', '4_mustache_short.png']
     ],
     beard_mustache_short_sideburns: [
-      ['3_beard.svg', '4_mustache_short.png', '3_sideburns.svg']
+      ['3_beard.png', '4_mustache_short.png', '4_sideburns.svg']
     ],
     beard_mustache_sideburns: [
-      ['3_beard.svg', '4_mustache.png', '3_sideburns.svg']
+      ['3_beard.png', '4_mustache.png', '4_sideburns.svg']
     ],
     beard_short_mustache: [
-      ['3_beard_short.svg', '4_mustache.png']
+      ['3_beard_short.png', '4_mustache.png']
     ],
     beard_short_mustache_short: [
-      ['3_beard_short.svg', '4_mustache_short.png']
+      ['3_beard_short.png', '4_mustache_short.png']
     ],
     beard_short_mustache_short_sideburns: [
-      ['3_beard_short.svg', '4_mustache_short.png', '3_sideburns.svg']
+      ['3_beard_short.png', '4_mustache_short.png', '4_sideburns.svg']
     ],
     beard_short_sideburns: [
-      ['3_beard_short.svg', '3_sideburns.svg']
+      ['3_beard_short.png', '4_moustache_white.svg', '4_sideburns.svg']
     ],
     beard_sideburns: [
-      ['3_beard_short.svg', '3_sideburns.svg']
+      ['3_beard_short.png', '4_moustache_white.svg', '4_sideburns.svg']
     ],
-    bears_short_mustache_sideburns: [
-      ['3_beard_short.svg', '4_mustache.png', '3_sideburns.svg']
+    beard_short_mustache_sideburns: [
+      ['3_beard_short.png', '4_mustache.png', '4_sideburns.svg']
     ],
     mustache: [
       ['4_mustache.png']
@@ -85,7 +85,7 @@ const svgList: SvgListType = {
       ['4_mustache_short.png']
     ],
     sideburns: [
-      ['3_sideburns.svg']
+      ['4_sideburns.svg']
     ],
     '': []
   },
