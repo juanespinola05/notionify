@@ -1,7 +1,7 @@
 import { PersonDetails } from '../types'
 import svgList from '../constants/svgList'
 
-export function getRandomCombination (combinations: string[][]): string[] {
+export function getRandomCombination (combinations: string[][] = [[]]): string[] {
   return combinations[Math.floor(Math.random() * combinations.length)]
 }
 
@@ -21,7 +21,7 @@ export async function fetchSvg (svgList: string[]): Promise<string[]> {
   const strings = await Promise.all(
     svgList
       .map(async svg => {
-        if (svg.split('.')[1] === 'png') return await Promise.resolve(svg)
+        if (svg.endsWith('png')) return await Promise.resolve(svg)
         return await fetch(`./svgs/${svg}`).then(async res => await res.text())
       })
   )
