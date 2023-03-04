@@ -5,7 +5,7 @@ export interface PersonDetails {
   emotion: EmotionsType
   glasses: 'no_glasses' | 'reading_glasses' | 'sunglasses'
   head: HeadCategory
-  facial_hair: 'beard' | 'beard_short' | 'mustache' | 'mustache_short' | 'beard_mustache' | 'beard_short_mustache_short' | 'beard_mustache_short' | 'beard_short_mustache' | 'sideburns' | 'beard_sideburns' | 'beard_short_sideburns' | 'beard_mustache_sideburns' | 'bears_short_mustache_sideburns' | 'beard_mustache_short_sideburns' | 'beard_short_mustache_short_sideburns' | ''
+  facial_hair: 'beard' | 'beard_short' | 'mustache' | 'mustache_short' | 'beard_mustache' | 'beard_short_mustache_short' | 'beard_mustache_short' | 'beard_short_mustache' | 'sideburns' | 'beard_sideburns' | 'beard_short_sideburns' | 'beard_mustache_sideburns' | 'beard_short_mustache_sideburns' | 'beard_mustache_short_sideburns' | 'beard_short_mustache_short_sideburns' | ''
 }
 
 interface CloudinaryPersonEntries {
