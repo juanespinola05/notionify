@@ -8,7 +8,7 @@ interface IProps {
 }
 
 function SvgCanvas ({ svgList, width = 306, height = 306 }: IProps): ReactElement {
-  const { svgToRender, handleDownload } = useAvatarCanvas(svgList)
+  const { svgToRender, handleDownload, hasBackground, toggleBackground } = useAvatarCanvas(svgList)
 
   return (
     <>
@@ -31,6 +31,16 @@ function SvgCanvas ({ svgList, width = 306, height = 306 }: IProps): ReactElemen
       >
         Descargar Avatar
       </button>
+      {
+        (svgList.length > 0) && (
+          <button
+            onClick={toggleBackground}
+            className='block px-4 py-2 bg-blue-800 text-white'
+          >
+            {hasBackground ? 'Desactivar' : 'Activar'} fondo
+          </button>
+        )
+      }
     </>
   )
 }
