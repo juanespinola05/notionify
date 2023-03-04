@@ -1,53 +1,71 @@
-import { RefObject, useEffect, useRef, useState } from 'react'
-import { fetchSvg } from '../utils/svg'
+import { FC, useEffect, useState } from 'react'
+import { svgComponents } from '../components/SVG'
 
-const IMAGE_DOWNLOAD_FORMAT = 'image/png'
+const outfitEntries = Object.entries(svgComponents).filter(([key]) => key.includes('outfit'))
+const outfitKeys = outfitEntries.map(([key]) => key)
+
+// const IMAGE_DOWNLOAD_FORMAT = 'image/png'
+const BACKGROUND_SVG = 'background'
 interface AvatarCanvas {
   downloadUrl: string | undefined
-  canvasRef: RefObject<HTMLCanvasElement>
-  loading: boolean
-  ready: boolean
+  svgToRender: FC[]
+  handleDownload: () => void
+  toggleBackground: () => void
+  hasBackground: boolean
+  outfitOptions: string[]
+  outfitSelection: string
+  changeSelection: (str: string) => void
 }
 
 export default function useAvatarCanvas (svgList: string[]): AvatarCanvas {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [svgStrings, setSvgStrings] = useState<string[]>([])
   const [downloadUrl, setDownloadUrl] = useState('')
-  const [loading, setLoading] = useState(true)
+  const [svgToRender, setSvgToRender] = useState<FC[]>([])
+  const [background, setBackground] = useState(true)
+  const [outfitSelection, setOutfitSelection] = useState<string>(outfitKeys[0])
+
+  const toggleBackground = (): void => setBackground(prev => !prev)
+
+  const changeSelection: AvatarCanvas['changeSelection'] = (newSelection) => {
+    setOutfitSelection(newSelection)
+  }
+
+  const handleDownload = (): void => {
+    const anchor = document.createElement('a')
+    void fetch(downloadUrl)
+      .then(async res => await res.blob())
+      .then(blob => {
+        anchor.href = URL.createObjectURL(blob)
+        anchor.download = 'avatar'
+        anchor.click()
+        anchor.remove()
+      })
+  }
 
   useEffect(() => {
-    setLoading(true)
-    fetchSvg(svgList)
-      .then(strings => setSvgStrings(strings))
-      .catch(err => console.error(err))
-      .finally(() => setLoading(false))
-  }, [svgList])
+    const svgNames = svgList.map(str => str.split('.')[0])
 
-  useEffect(() => {
-    const canvas = canvasRef.current as HTMLCanvasElement
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-    // reset canvas to avoid conflicts
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    if (background && svgNames.length > 0) svgNames.splice(0, 0, BACKGROUND_SVG)
+    else if (!background && svgNames[1] === BACKGROUND_SVG) {
+      svgNames.splice(1, 1)
+    }
 
-    svgStrings.forEach((string, index) => {
-      const finalSVG = string
-      // if (index === 0) finalSVG = string.replace(/currentColor/g, '%23713F12')
-      const img = new Image()
-      img.onload = () => {
-        ctx.drawImage(img, 0, 0)
-      }
-      img.src = `data:image/svg+xml;charset=utf-8, ${finalSVG}`
-    })
-    // TODO: Fix this to not use interval
-    setTimeout(() => {
-      setDownloadUrl(canvas.toDataURL(IMAGE_DOWNLOAD_FORMAT))
-    }, 500)
-  }, [svgStrings])
+    svgNames.splice(0, 0, outfitSelection)
+    const svgToRender = svgNames.map(name => svgComponents[name])
+
+    setSvgToRender(svgToRender)
+
+    const url = `https://notion-avatar.deno.dev?layers=${svgNames.join(';')}`
+    setDownloadUrl(url)
+  }, [svgList, background, outfitSelection])
 
   return {
-    canvasRef,
-    loading,
     downloadUrl,
-    ready: svgStrings.length > 0
+    svgToRender,
+    handleDownload,
+    toggleBackground,
+    changeSelection,
+    outfitSelection,
+    hasBackground: background,
+    outfitOptions: outfitKeys
   }
 }

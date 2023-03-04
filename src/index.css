@@ -28,3 +28,6 @@ html{
       transform: translateY(0%);
     }
   }
+div svg {
+  @apply w-full h-full
+}
