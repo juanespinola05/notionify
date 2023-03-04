@@ -8,11 +8,9 @@ const SvgComponentsBaseFile = (entries: string): string => `// DO NOT EDIT. This
 // This file is automatically updated
 import { FC } from 'react'
 
-const SVG: Record<string, FC> = {
+export const svgComponents: Record<string, FC> = {
   ${entries}
 }
-
-export default SVG
 `
 
 const svgFiles = await promises.readdir(SVG_PATH)
