@@ -20,14 +20,15 @@ const svgFiles = await promises.readdir(SVG_PATH)
 const svgEntries: string[] = []
 
 for (const svgFile of svgFiles) {
-  const [name] = svgFile.split('.')
+  const [name, extension] = svgFile.split('.')
+  if (extension !== 'svg') continue
   const inObject = svgEntries.some(entry => entry.startsWith(name))
   if (inObject) continue
 
   const svgFileContent = (await promises.readFile(resolve(SVG_PATH, svgFile)))
     .toString()
     .replaceAll(/\n/mg, '')
-  const newEntry = `${name}: () => ${svgFileContent}`
+  const newEntry = `'${name}': () => ${svgFileContent}`
   svgEntries.push(newEntry)
 }
 
