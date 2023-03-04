@@ -34,7 +34,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
 
   const TextLoader = () => {
     return (
-      <div className='w-full h-8 relative bg-blue-50 overflow-hidden'>
+      <div className='w-full h-8 relative bg-blue-00 overflow-hidden'>
         {
           DROPPER_LOADING_TEXT_LIST.map((text) => (
             <p className='text-red-700 text-center line-up absolute' key={text}>{text}</p>
