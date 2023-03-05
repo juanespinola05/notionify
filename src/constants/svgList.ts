@@ -50,14 +50,14 @@ const svgList: SvgListType = {
       ['3_beard.svg', '3_mustache.svg', '4_sideburns.svg']
     ],
     beard_short: [
-      ['2_head_1.svg'],
-      ['2_head_2.svg'],
-      ['2_head_3.svg'],
-      ['2_head_4.svg'],
-      ['2_head_5.svg'],
-      ['2_head_6.svg'],
-      ['2_head_7.svg'],
-      ['2_head_8.svg']
+      ['3_beard_1.svg'],
+      ['3_beard_2.svg'],
+      ['3_beard_3.svg'],
+      ['3_beard_4.svg'],
+      ['3_beard_5.svg'],
+      ['3_beard_6.svg'],
+      ['3_beard_7.svg'],
+      ['3_beard_8.svg']
     ],
     beard_sideburns: [
       ['3_beard.svg', '4_sideburns.svg']
