@@ -43,7 +43,12 @@ export default function useAvatarCanvas (svgList: string[]): AvatarCanvas {
 
   useEffect(() => {
     const svgNames = svgList.map(str => str.split('.')[0])
-
+    svgNames.sort((a, b) => a.localeCompare(b))
+    // ? if it has a head with beard, remove first head
+    if (svgNames.some(svg => svg.includes('2_head'))) {
+      const headIndex = svgNames.findIndex(svg => svg.startsWith('1_head_'))
+      svgNames.splice(headIndex, 1)
+    }
     if (background && svgNames.length > 0) svgNames.splice(0, 0, BACKGROUND_SVG)
     else if (!background && svgNames[1] === BACKGROUND_SVG) {
       svgNames.splice(1, 1)

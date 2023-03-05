@@ -1,11 +1,11 @@
 export type EmotionsType = 'anger' | 'contempt' | 'disgust' | 'fear' | 'happiness' | 'neutral' | 'sadness' | 'surprise'
-type GenderType = 'female' | 'male'
+export type GenderType = 'female' | 'male'
 export interface PersonDetails {
   gender: GenderType
   emotion: EmotionsType
   glasses: 'no_glasses' | 'reading_glasses' | 'sunglasses'
   head: HeadCategory
-  facial_hair: 'beard' | 'beard_short' | 'mustache' | 'mustache_short' | 'beard_mustache' | 'beard_short_mustache_short' | 'beard_mustache_short' | 'beard_short_mustache' | 'sideburns' | 'beard_sideburns' | 'beard_short_sideburns' | 'beard_mustache_sideburns' | 'beard_short_mustache_sideburns' | 'beard_mustache_short_sideburns' | 'beard_short_mustache_short_sideburns' | ''
+  facial_hair: '' | 'beard_short' | 'beard_mustache_sideburns' | 'beard_mustache' | 'beard_sideburns'
 }
 
 interface CloudinaryPersonEntries {

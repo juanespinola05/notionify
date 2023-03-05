@@ -42,52 +42,26 @@ const svgList: SvgListType = {
     sunglasses: []
   },
   facial_hair: {
-    beard: [
-      ['3_beard.png', '4_moustache_white.svg']
-    ],
-    beard_short: [
-      ['3_beard_short.png', '4_moustache_white.svg']
-    ],
+    '': [],
     beard_mustache: [
-      ['3_beard.png', '4_mustache.png']
-    ],
-    beard_mustache_short: [
-      ['3_beard.png', '4_mustache_short.png']
-    ],
-    beard_mustache_short_sideburns: [
-      ['3_beard.png', '4_mustache_short.png', '4_sideburns.svg']
+      ['3_beard.svg', '3_mustache.svg']
     ],
     beard_mustache_sideburns: [
-      ['3_beard.png', '4_mustache.png', '4_sideburns.svg']
+      ['3_beard.svg', '3_mustache.svg', '4_sideburns.svg']
     ],
-    beard_short_mustache: [
-      ['3_beard_short.png', '4_mustache.png']
-    ],
-    beard_short_mustache_short: [
-      ['3_beard_short.png', '4_mustache_short.png']
-    ],
-    beard_short_mustache_short_sideburns: [
-      ['3_beard_short.png', '4_mustache_short.png', '4_sideburns.svg']
-    ],
-    beard_short_sideburns: [
-      ['3_beard_short.png', '4_moustache_white.svg', '4_sideburns.svg']
+    beard_short: [
+      ['2_head_1.svg'],
+      ['2_head_2.svg'],
+      ['2_head_3.svg'],
+      ['2_head_4.svg'],
+      ['2_head_5.svg'],
+      ['2_head_6.svg'],
+      ['2_head_7.svg'],
+      ['2_head_8.svg']
     ],
     beard_sideburns: [
-      ['3_beard_short.png', '4_moustache_white.svg', '4_sideburns.svg']
-    ],
-    beard_short_mustache_sideburns: [
-      ['3_beard_short.png', '4_mustache.png', '4_sideburns.svg']
-    ],
-    mustache: [
-      ['4_mustache.png']
-    ],
-    mustache_short: [
-      ['4_mustache_short.png']
-    ],
-    sideburns: [
-      ['4_sideburns.svg']
-    ],
-    '': []
+      ['3_beard.svg', '4_sideburns.svg']
+    ]
   },
   gender: {
     male: [
@@ -111,63 +85,63 @@ const svgList: SvgListType = {
       []
     ],
     female_large: [
-      ['2_hair_3.svg'],
-      ['2_hair_6.svg'],
-      ['2_hair_9.svg'],
-      ['2_hair_19.svg'],
-      ['2_hair_20.svg'],
-      ['2_hair_21.svg'],
-      ['2_hair_27.svg'],
-      ['2_hair_28.svg'],
-      ['2_hair_29.svg'],
-      ['2_hair_30.svg'],
-      ['2_hair_31.svg'],
-      ['2_hair_32.svg']
+      ['3_hair_3.svg'],
+      ['3_hair_6.svg'],
+      ['3_hair_9.svg'],
+      ['3_hair_19.svg'],
+      ['3_hair_20.svg'],
+      ['3_hair_21.svg'],
+      ['3_hair_27.svg'],
+      ['3_hair_28.svg'],
+      ['3_hair_29.svg'],
+      ['3_hair_30.svg'],
+      ['3_hair_31.svg'],
+      ['3_hair_32.svg']
     ],
     bald_short: [
-      ['2_hair_23.svg']
+      ['3_hair_23.svg']
     ],
     male_large: [
-      ['2_hair_29.svg'],
-      ['2_hair_16.svg']
+      ['3_hair_29.svg'],
+      ['3_hair_16.svg']
     ],
     male_cut_average_thick: [
-      ['2_hair_4.svg'],
-      ['2_hair_8.svg'],
-      ['2_hair_12.svg'],
-      ['2_hair_18.svg']
+      ['3_hair_4.svg'],
+      ['3_hair_8.svg'],
+      ['3_hair_12.svg'],
+      ['3_hair_18.svg']
     ],
     male_cut_average_average: [
-      ['2_hair_17.svg'],
-      ['2_hair_14.svg'],
-      ['2_hair_25.svg']
+      ['3_hair_17.svg'],
+      ['3_hair_14.svg'],
+      ['3_hair_25.svg']
     ],
     male_cut_receding: [
-      ['2_hair_4.svg'],
-      ['2_hair_12.svg'],
-      ['2_hair_15.svg'],
-      ['2_hair_24.svg'],
-      ['2_hair_25.svg']
+      ['3_hair_4.svg'],
+      ['3_hair_12.svg'],
+      ['3_hair_15.svg'],
+      ['3_hair_24.svg'],
+      ['3_hair_25.svg']
     ],
     male_cut_thick_thick: [
-      ['2_hair_22.svg'],
-      ['2_hair_2.svg']
+      ['3_hair_22.svg'],
+      ['3_hair_2.svg']
     ],
     male_cut_thin_thin: [
-      ['2_hair_1.svg'],
-      ['2_hair_10.svg'],
-      ['2_hair_23.svg'],
-      ['2_hair_24.svg']
+      ['3_hair_1.svg'],
+      ['3_hair_10.svg'],
+      ['3_hair_23.svg'],
+      ['3_hair_24.svg']
     ],
     male_cut_wavy: [
-      ['2_hair_22.svg'],
-      ['2_hair_2.svg']
+      ['3_hair_22.svg'],
+      ['3_hair_2.svg']
     ],
     default: [
-      ['2_hair_4.svg'],
-      ['2_hair_8.svg'],
-      ['2_hair_12.svg'],
-      ['2_hair_18.svg']
+      ['3_hair_4.svg'],
+      ['3_hair_8.svg'],
+      ['3_hair_12.svg'],
+      ['3_hair_18.svg']
     ]
   }
 }
