@@ -33,6 +33,10 @@ div svg {
   @apply w-full h-full
 }
 
+button{
+  @apply active:scale-95 transition-all
+}
+
 @layer base {
   html {
     font-family: Inter, system-ui, sans-serif;
