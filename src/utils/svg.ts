@@ -13,7 +13,13 @@ export function mapDetailsToSvg (details: Partial<PersonDetails>): string[] {
     return getRandomCombination(detail[value as keyof typeof detail]) ?? []
   })
 
-  avatarSvgs.sort((a, b) => Number(a.at(0)) - Number(b.at(0)))
+  avatarSvgs.sort((a, b) => {
+    const A = Number(a.at(0))
+    const B = Number(b.at(0))
+    if (isNaN(A)) return 0
+    if (isNaN(B)) return -1
+    return A - B
+  })
   return avatarSvgs
 }
 

@@ -4,7 +4,6 @@ import { getCutHairStyle } from './hairstyle'
 export const findTag = (targetTag: string, tags: BetaFaceAPITag[]): string | undefined => tags.find((tag) => tag.name === targetTag)?.value
 
 export function getHead ({ face, gender }: HeadDataBetaFaceAPI): HeadCategory {
-  console.log('🚀 ~ file: head.ts:7 ~ face:', face)
   const { tags } = face
   const hairTags = tags.filter(tag => tag.name.includes('hair'))
   const isBald = tags.find(tag => tag.name === 'bald')?.value === 'yes'
