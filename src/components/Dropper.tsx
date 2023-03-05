@@ -1,49 +1,20 @@
 import { ReactElement, useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { DROPPER_LOADING_TEXT_LIST } from '../config'
 
 interface DropperProps {
-  handleDrop: () => Promise<void>
+  handleDrop: (dropper: any) => Promise<void>
   isLoading?: boolean
 }
-
-const DROPPER_LOADING_TEXT_LIST = ['Extrayendo archivo...', 'Leyendo documentos...', 'Generando analisis...', 'Banca un toque...']
 
 export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
   const [isLoading, setIsLoading] = useState(false)
 
   const onDrop = useCallback(acceptedFiles => {
     setIsLoading(true)
-    handleDrop().finally(() => setIsLoading(false))
+    handleDrop(acceptedFiles).finally(() => setIsLoading(false))
   }, [])
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({ onDrop })
-
-  const Loader = () => {
-    const images = [1, 2, 3, 4]
-
-    return (
-      <div className='relative w-64 h-6w-64'>
-        {images.map((image) => {
-          return <img key={image} className='w-full h-full animated absolute' src={`src/assets/${image}.svg`} alt='' />
-        })}
-        {/* <img className='w-full h-full absolute animated' src='src/assets/2.svg' alt='' />
-        <img className='w-full h-full absolute animated' src='src/assets/3.svg' alt='' />
-        <img className='w-full h-full absolute animated' src='src/assets/4.svg' alt='' /> */}
-      </div>
-    )
-  }
-
-  const TextLoader = () => {
-    return (
-      <div className='w-full h-8 relative bg-blue-00 overflow-hidden'>
-        {
-          DROPPER_LOADING_TEXT_LIST.map((text) => (
-            <p className='text-red-700 text-center line-up absolute' key={text}>{text}</p>
-          ))
-
-        }
-      </div>
-    )
-  }
 
   return (
     <div className='grid gap-4 place-items-center'>
@@ -77,7 +48,30 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
                 </div>
                 )
           }
-      <TextLoader />
+    </div>
+  )
+}
+
+const Loader = (): JSX.Element => {
+  return (
+    <div className='relative w-64 h-6w-64'>
+      <img className='w-full h-full absolute animated' src='src/assets/1.svg' alt='' />
+      <img className='w-full h-full absolute animated' src='src/assets/2.svg' alt='' />
+      <img className='w-full h-full absolute animated' src='src/assets/3.svg' alt='' />
+      <img className='w-full h-full absolute animated' src='src/assets/4.svg' alt='' />
+    </div>
+  )
+}
+
+const TextLoader = (): JSX.Element => {
+  return (
+    <div className='w-full h-8 relative bg-blue-00 overflow-hidden'>
+      {
+        DROPPER_LOADING_TEXT_LIST.map((text) => (
+          <p className='text-red-700 text-center line-up absolute' key={text}>{text}</p>
+        ))
+
+      }
     </div>
   )
 }

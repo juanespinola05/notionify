@@ -9,7 +9,29 @@ interface IProps {
 }
 
 function SvgCanvas ({ svgList, width = 306, height = 306 }: IProps): ReactElement {
-  const {
+  const { svgToRender, hasBackground } = useAvatarCanvas(svgList)
+
+  return (
+    <div className={`relative m-auto overflow-hidden w-64 h-64 ${hasBackground ? 'clip-illustration' : ''}`}>
+      {
+          svgToRender.map((Svg, index) => {
+            // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+            if (!Svg) return null
+            return (
+              <div key={index} className='top-0 absolute w-full'>
+                <Svg />
+              </div>
+            )
+          })
+        }
+    </div>
+  )
+}
+
+export default SvgCanvas
+
+/*
+ const {
     svgToRender,
     handleDownload,
     hasBackground,
@@ -19,9 +41,8 @@ function SvgCanvas ({ svgList, width = 306, height = 306 }: IProps): ReactElemen
     changeSelection
   } = useAvatarCanvas(svgList)
 
-  return (
-    <>
-      <div className='relative overflow-hidden w-[320px] h-[320px]'>
+   <>
+      <div className='relative overflow-hidden w-64 h-64'>
         {
           svgToRender.map((Svg, index) => {
             // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
@@ -64,7 +85,5 @@ function SvgCanvas ({ svgList, width = 306, height = 306 }: IProps): ReactElemen
         }
       </div>
     </>
-  )
-}
 
-export default SvgCanvas
+*/

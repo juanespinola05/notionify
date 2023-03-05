@@ -28,6 +28,24 @@ html{
       transform: translateY(0%);
     }
   }
+
 div svg {
   @apply w-full h-full
+}
+
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+
+  .clip-illustration {
+
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+
+  }
+
 }
