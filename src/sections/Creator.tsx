@@ -5,14 +5,15 @@ import { useDetection } from '../hooks/useDetection'
 import { mapDetailsToSvg } from '../utils/svg'
 import { CloudinaryDetectionResponse } from '../types'
 import { useIllustrations } from '../context/illustration'
-import SvgCanvas from '../components/SvgCanvas'
+import Canvas from '../components/Canvas'
 import ConfigBar from '../components/ConfigBar'
+import { ReactNode } from 'react'
 
 export default function SectionCreator (): React.ReactElement {
   const { detection, setDetection } = useDetection()
-  const { list, setIllustrations } = useIllustrations()
+  const { illustrationIdList, setIllustrationsIDList } = useIllustrations()
 
-  const hasList = list.length > 0
+  const hasList = illustrationIdList.length > 0
 
   let clodinaryResponse: CloudinaryDetectionResponse
 
@@ -20,35 +21,40 @@ export default function SectionCreator (): React.ReactElement {
     uploadImage(droppedFile[0])
       .then(async (response) => { clodinaryResponse = response; return await fetchBetaFace(response.url) })
       .then((data) => {
+        // TODO: revisar si esto funciona
+        console.log(data.media.faces.at(0))
+
         setDetection(clodinaryResponse, data.media.faces.at(0))
         const svgList = mapDetailsToSvg(detection)
-        setIllustrations(svgList)
+        setIllustrationsIDList(svgList)
       })
       .catch(err => console.log(err))
   }
   return (
     <Section className='bg-white w-full grid place-items-center gap-48 relative'>
-      {/* {hasList && <ConfigBar />} */}
-      <ConfigBar />
+      {hasList && <ConfigBar />}
+      {/* <ConfigBar /> */}
       <div className='grid pt-36 w-full place-items-center' id='creator'>
 
         <IllustrationWrapper hasList={hasList}>
           {
             hasList
-              ? <SvgCanvas svgList={list} />
+              ? <Canvas />
               : <Dropper handleDrop={handleDrop} />
           }
         </IllustrationWrapper>
       </div>
 
-      <button onClick={() => setIllustrations(mapDetailsToSvg(detection))}>
+      <button onClick={() => setIllustrationsIDList(mapDetailsToSvg(detection))}>
         Regenerar
       </button>
     </Section>
   )
 }
 
-function IllustrationWrapper ({ children, hasList }): React.ReactElement {
+function IllustrationWrapper (
+  { children, hasList }: { children: ReactNode, hasList: boolean }
+): React.ReactElement {
   return (
     <div className='relative w-full max-w-md'>
       {children}
