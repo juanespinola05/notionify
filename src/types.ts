@@ -90,3 +90,7 @@ export interface HeadDataBetaFaceAPI {
 }
 
 export type HairLengthValue = 'none' | 'short' | 'very short' | 'average' | 'long' | 'very long'
+
+export interface IconProps {
+  className?: string
+}

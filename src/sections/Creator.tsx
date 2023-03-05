@@ -6,6 +6,7 @@ import { mapDetailsToSvg } from '../utils/svg'
 import { CloudinaryDetectionResponse } from '../types'
 import { useIllustrations } from '../context/illustration'
 import SvgCanvas from '../components/SvgCanvas'
+import ConfigBar from '../components/ConfigBar'
 
 export default function SectionCreator (): React.ReactElement {
   const { detection, setDetection } = useDetection()
@@ -19,16 +20,18 @@ export default function SectionCreator (): React.ReactElement {
     uploadImage(droppedFile[0])
       .then(async (response) => { clodinaryResponse = response; return await fetchBetaFace(response.url) })
       .then((data) => {
-        console.log('🚀 BetaFace API:', data)
         setDetection(clodinaryResponse, data.media.faces.at(0))
-        const foo = mapDetailsToSvg(detection)
-        setIllustrations(foo)
+        const svgList = mapDetailsToSvg(detection)
+        setIllustrations(svgList)
       })
       .catch(err => console.log(err))
   }
   return (
-    <Section className='bg-white grid gap-48'>
-      <div className='grid pt-32 place-items-center' id='creator'>
+    <Section className='bg-white w-full grid place-items-center gap-48 relative'>
+      {/* {hasList && <ConfigBar />} */}
+      <ConfigBar />
+      <div className='grid pt-36 w-full place-items-center' id='creator'>
+
         <IllustrationWrapper hasList={hasList}>
           {
             hasList
