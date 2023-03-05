@@ -1,9 +1,9 @@
-import { HeadCategory, HeadDataBetaFaceAPI, BetaFaceAPITag, HairLengthValue, HeadInitialCategory } from '../types'
+import { HeadCategory, HeadDataBetaFaceAPI, BetaFaceAPITag, HairLengthValue, HeadInitialCategory, GenderType } from '../types'
 import { getCutHairStyle } from './hairstyle'
 
 export const findTag = (targetTag: string, tags: BetaFaceAPITag[]): string | undefined => tags.find((tag) => tag.name === targetTag)?.value
 
-export function getHead ({ face, gender }: HeadDataBetaFaceAPI): HeadCategory {
+export function getHead ({ face, gender }: { face: HeadDataBetaFaceAPI, gender: GenderType }): HeadCategory {
   const { tags } = face
   const hairTags = tags.filter(tag => tag.name.includes('hair'))
   const isBald = tags.find(tag => tag.name === 'bald')?.value === 'yes'
@@ -33,7 +33,7 @@ function getHairCategory (hairLengthValue: HairLengthValue): HeadInitialCategory
   return groups[hairLengthValue]
 }
 
-function getHairStyle (hairTags: BetaFaceAPITag[], gender: HeadDataBetaFaceAPI['gender']): HeadCategory {
+function getHairStyle (hairTags: BetaFaceAPITag[], gender: GenderType): HeadCategory {
   const hairLength = hairTags.find(tag => tag.name === 'hair length')?.value ?? 'cut'
   const hairCategory = getHairCategory(hairLength as HairLengthValue)
 
