@@ -98,3 +98,8 @@ export type HairLengthValue = 'none' | 'short' | 'very short' | 'average' | 'lon
 export interface IconProps {
   className?: string
 }
+
+export interface DownloadOptions {
+  size?: '300' | '1000'
+  format?: 'png' | 'jpg'
+}

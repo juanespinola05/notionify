@@ -1,28 +1,28 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { svgComponents } from '../components/SVG'
 import { useIllustrations } from '../context/illustration'
+import { DownloadOptions } from '../types'
+import { buildAvatarUrl } from '../utils/export'
 
 const outfitEntries = Object.entries(svgComponents).filter(([key]) => key.includes('outfit'))
 const outfitKeys = outfitEntries.map(([key]) => key)
 
 // const IMAGE_DOWNLOAD_FORMAT = 'image/png'
 interface AvatarCanvas {
-  downloadUrl: string | undefined
   svgToRender: FC[]
-  handleDownload: () => void
+  handleDownload: (options: DownloadOptions) => void
   hasBackground: boolean
   outfitOptions: string[]
 }
 
 export default function useAvatarCanvas (): AvatarCanvas {
   const { hasBackground, illustrationIdList } = useIllustrations()
-  const [downloadUrl, setDownloadUrl] = useState('')
-  const [svgToRender, setSvgToRender] = useState<FC[]>([])
-  console.log(illustrationIdList)
+  const svgToRender = illustrationIdList.map(id => svgComponents[id])
 
-  const handleDownload = (): void => {
+  const handleDownload: AvatarCanvas['handleDownload'] = (options): void => {
+    const url = buildAvatarUrl({ ...options, illustrationIdList })
     const anchor = document.createElement('a')
-    void fetch(downloadUrl)
+    void fetch(url)
       .then(async res => await res.blob())
       .then(blob => {
         anchor.href = URL.createObjectURL(blob)
@@ -32,23 +32,7 @@ export default function useAvatarCanvas (): AvatarCanvas {
       })
   }
 
-  useEffect(() => {
-    // ? if it has short beard, remove first head and find matching head for that beard
-    // const shortBeardSVG = illustrationIdList.find(svg => /3_beard_\d/ig.test(svg))
-    // if (shortBeardSVG !== undefined) {
-    //   const headIndex = illustrationIdList.findIndex(svg => svg.startsWith('1_head_'))
-    //   illustrationIdList.splice(headIndex, 1, `1_head_${shortBeardSVG.at(-1) as string}`)
-    // }
-
-    const svgToRender = illustrationIdList.map(name => svgComponents[name])
-    setSvgToRender(svgToRender)
-
-    const url = `https://notion-avatar.deno.dev?layers=${illustrationIdList.join(';')}`
-    setDownloadUrl(url)
-  }, [])
-
   return {
-    downloadUrl,
     svgToRender,
     handleDownload,
     outfitOptions: outfitKeys,

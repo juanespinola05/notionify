@@ -65,6 +65,11 @@ function useIllustrations (): IllustrationsHook {
     : []
 
   const setIllustrationsIDList = (list: string[]): void => {
+    const shortBeardSVG = list.find(svg => /3_beard_\d/ig.test(svg))
+    if (shortBeardSVG !== undefined) {
+      const headIndex = list.findIndex(svg => svg.startsWith('1_head_'))
+      list.splice(headIndex, 1, `1_head_${shortBeardSVG.at(-1) as string}`)
+    }
     list.sort((a, b) => a.localeCompare(b))
     dispatch({ type: SET_ID_LIST, payload: list })
   }
