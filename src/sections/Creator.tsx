@@ -21,9 +21,6 @@ export default function SectionCreator (): React.ReactElement {
     uploadImage(droppedFile[0])
       .then(async (response) => { clodinaryResponse = response; return await fetchBetaFace(response.url) })
       .then((data) => {
-        // TODO: revisar si esto funciona
-        console.log(data.media.faces.at(0))
-
         setDetection(clodinaryResponse, data.media.faces.at(0))
         const svgList = mapDetailsToSvg(detection)
         setIllustrationsIDList(svgList)
