@@ -1,4 +1,3 @@
-import Download from '../assets/icons/Download'
 import Stars from '../assets/icons/Stars'
 import Hanger from '../assets/icons/Hanger'
 import useAvatarCanvas from '../hooks/useAvatarCanvas'
@@ -7,7 +6,7 @@ import { svgComponents } from './SVG'
 import ExportModal from './ExportModal'
 import { ReactElement } from 'react'
 
-export default function ConfigBar (): React.ReactElement {
+export default function ConfigBar (): ReactElement {
   const { setOutfit, outfitId } = useIllustrations()
   const { outfitOptions } = useAvatarCanvas()
 

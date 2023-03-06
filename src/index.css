@@ -6,6 +6,10 @@ html{
     scroll-behavior: smooth !important;
 }
 
+.vertical-rotate {
+  transform: rotateY(180deg);
+}
+
 .loader-3d {
   animation: flip 2s infinite;
   -ms-transform-style: preserve-3d;
