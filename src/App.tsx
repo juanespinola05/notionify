@@ -13,7 +13,7 @@ function App (): ReactElement {
   return (
     <>
       <ErrorAlert />
-      <main className='grid gap-4'>
+      <main className='grid'>
         <Hero />
         <SectionCreator />
         <Section className='w-full bg-gray-200' />

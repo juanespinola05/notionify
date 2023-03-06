@@ -24,6 +24,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
   const { setError } = useError()
 
   const onDropRejected = useCallback<OnDropRejectedCallback>(() => {
+    console.log('error')
     setError(ALLOWED_FORMATS)
   }, [])
 
@@ -43,7 +44,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
 
   return (
     <div className='grid gap-4 place-items-center'>
-      <div {...getRootProps()} className='transition-all w-64 h-64 rounded-full grid place-items-center'>
+      <div {...getRootProps()} className='transition-all w-64 h-64 bg-white rounded-full grid place-items-center'>
         <input {...getInputProps()} />
 
         {
@@ -79,7 +80,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
                     <div className='border-t-2 w-16 border-current' />
                   </div>
 
-                  <button onClick={() => open()} className='w-28 bg-gray-800 py-1.5 px-4 text-white rounded-lg hover:outline-2 hover:outline-double hover:outline-slate-600'>Browse file</button>
+                  <button onClick={() => open()} className='w-32 border-2 border-black py-1.5 px-4 text-black underline rounded-lg hover:outline-2 hover:outline-double hover:outline-slate-600'>Browse file</button>
                 </div>
                 )
           }

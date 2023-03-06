@@ -19,7 +19,7 @@ export default function ExportModal ({ label }: ModalProps): React.ReactElement 
 
   return (
     <>
-      <label htmlFor='my-modal-3' className='btn bg-gray-800'>{label}</label>
+      <label htmlFor='my-modal-3' className='btn bg-black'>{label}</label>
 
       <input type='checkbox' id='my-modal-3' className='modal-toggle' />
       <div className='modal'>
