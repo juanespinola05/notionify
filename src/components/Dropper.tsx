@@ -1,20 +1,45 @@
 import { ReactElement, useCallback, useState } from 'react'
-import { useDropzone } from 'react-dropzone'
+import { useDropzone, DropzoneOptions } from 'react-dropzone'
 import { DROPPER_LOADING_TEXT_LIST } from '../config'
+import { useError } from '../context/error'
 
 interface DropperProps {
   handleDrop: (dropper: any) => Promise<void>
   isLoading?: boolean
 }
 
+const ALLOWED_MIME = {
+  'image/png': ['.png'],
+  'image/jpeg': ['.jpg', '.jpeg'],
+  'image/webp': ['.webp']
+}
+
+const ALLOWED_FORMATS = 'Only PNG, JPEG, JPG and WEBP are allowed'
+
+type OnDropCallback = NonNullable<DropzoneOptions['onDrop']>
+type OnDropRejectedCallback = NonNullable<DropzoneOptions['onDropRejected']>
+
 export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
   const [isLoading, setIsLoading] = useState(false)
+  const { setError } = useError()
 
-  const onDrop = useCallback(acceptedFiles => {
+  const onDropRejected = useCallback<OnDropRejectedCallback>(() => {
+    setError(ALLOWED_FORMATS)
+  }, [])
+
+  const onDrop = useCallback<OnDropCallback>((acceptedFiles, fileRejection) => {
+    if (fileRejection.length > 0) return
+
     setIsLoading(true)
     handleDrop(acceptedFiles).finally(() => setIsLoading(false))
   }, [])
-  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({ onDrop })
+
+  const { getRootProps, getInputProps, isDragActive, open, isDragReject } = useDropzone({
+    onDrop,
+    onDropRejected,
+    multiple: false,
+    accept: ALLOWED_MIME
+  })
 
   return (
     <div className='grid gap-4 place-items-center'>
@@ -24,7 +49,13 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
         {
           isLoading
             ? <Loader />
-            : <img src='src/assets/1.svg' alt='' className={`w-full h-full opacity-30  ${isDragActive ? 'opacity-80' : ''}`} />
+            : (
+              <img
+                src={`src/assets/${isDragReject ? 'angry' : (isDragActive ? '5' : '1')}.svg`}
+                alt=''
+                className={`w-full h-full opacity-30  ${isDragActive ? 'opacity-80' : ''}`}
+              />
+              )
         }
       </div>
 
@@ -34,7 +65,11 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
               : (
                 <div className={`grid gap-3 place-items-center text-gray-400  transition-all ${isDragActive ? 'text-gray-800' : ''}`}>
                   <p className='flex flex-col items-center'>
-                    {isDragActive ? 'Drop' : 'Drag'} your image here to start
+                    {
+                      isDragReject
+                        ? <span className='text-red-600'>{ALLOWED_FORMATS}</span>
+                        : <span>{isDragActive ? 'Drop' : 'Drag'} your image here to start</span>
+                    }
                     <span className='text-sm font-medium'>(must be a single person)</span>
                   </p>
 
@@ -68,7 +103,7 @@ const TextLoader = (): JSX.Element => {
     <div className='w-full h-8 relative bg-blue-00 overflow-hidden'>
       {
         DROPPER_LOADING_TEXT_LIST.map((text) => (
-          <p className='text-red-700 text-center line-up absolute' key={text}>{text}</p>
+          <p className='text-red-700 text-center line-up' key={text}>{text}</p>
         ))
 
       }
