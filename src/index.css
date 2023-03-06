@@ -7,27 +7,46 @@ html{
 }
   
 
-  .line-up {
-    animation: line-up 3s infinite;
-  }
+.line-up {
+  animation: line-up 3s infinite;
+}
 
-  @keyframes line-up {
-    0% {
-      opacity: 0;
-      transform: translateY(0);
-    }
-    20% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-      transform: translateY(30%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0%);
-    }
+@keyframes line-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
   }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.slide-in {
+  animation: slide-in 5s ease-in-out
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%)
+  }
+  5% {
+    transform: translateX(0);
+  }
+  95% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%)
+  }
+}
 
 div svg {
   @apply w-full h-full

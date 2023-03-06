@@ -1,31 +1,34 @@
 import Section from '../layout/Section'
 import Dropper from '../components/Dropper'
-import { uploadImage, fetchBetaFace } from '../utils/upload'
+import { uploadImage } from '../utils/upload'
 import { useDetection } from '../hooks/useDetection'
 import { mapDetailsToSvg } from '../utils/svg'
-import { CloudinaryDetectionResponse } from '../types'
 import { useIllustrations } from '../context/illustration'
 import Canvas from '../components/Canvas'
 import ConfigBar from '../components/ConfigBar'
 import { ReactNode } from 'react'
+import { useError } from '../context/error'
+import { handleError } from '../utils/error'
 
 export default function SectionCreator (): React.ReactElement {
-  const { detection, setDetection } = useDetection()
+  const { detection, setDetection, resetDetection } = useDetection()
   const { illustrationIdList, setIllustrationsIDList } = useIllustrations()
+  const { setError } = useError()
 
   const hasList = illustrationIdList.length > 0
 
-  let clodinaryResponse: CloudinaryDetectionResponse
-
   async function handleDrop (droppedFile: any): Promise<void> {
-    uploadImage(droppedFile[0])
-      .then(async (response) => { clodinaryResponse = response; return await fetchBetaFace(response.url) })
-      .then((data) => {
-        setDetection(clodinaryResponse, data.media.faces.at(0))
-        const svgList = mapDetailsToSvg(detection)
-        setIllustrationsIDList(svgList)
-      })
-      .catch(err => console.log(err))
+    try {
+      const data = await uploadImage(droppedFile[0])
+      setDetection(data)
+
+      const svgList = mapDetailsToSvg(detection)
+      setIllustrationsIDList(svgList)
+    } catch (error) {
+      const message = handleError(error)
+      setError(message)
+      resetDetection()
+    }
   }
   return (
     <Section className='bg-white w-full grid place-items-center gap-48 relative'>

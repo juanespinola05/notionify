@@ -2,6 +2,7 @@ import { getGlasses, getHighestEmotion } from '../utils/detection'
 import { getHead } from '../utils/head'
 import { CloudinaryDetectionResponse, HeadDataBetaFaceAPI } from '../types'
 import { getFacialHairBeta } from '../utils/facialHair'
+import { useError } from '../context/error'
 
 const initialState = {
   gender: '',
@@ -13,11 +14,18 @@ const initialState = {
 
 export function useDetection (): any {
   const detection = initialState
+  const { setError } = useError()
 
   const setDetection = (detectionObject: CloudinaryDetectionResponse, face: HeadDataBetaFaceAPI): void => {
-    if (detectionObject?.info?.detection?.adv_face?.data?.length > 1) throw new Error('You must upload an individual image')
+    if (detectionObject?.info?.detection?.adv_face?.data?.length > 1) {
+      setError('You must upload an individual image')
+      return
+    }
     const data = detectionObject.info.detection.adv_face.data[0]
-    if (face === undefined) throw new Error('No people found in the image')
+    if (face === undefined) {
+      setError('No people found in the image')
+      return
+    }
 
     detection.gender = data.attributes.gender
     detection.emotion = getHighestEmotion(data.attributes.emotion)
@@ -27,5 +35,13 @@ export function useDetection (): any {
     detection.facial_hair = getFacialHairBeta(face.tags)
   }
 
-  return { detection, setDetection }
+  const resetDetection = (): void => {
+    detection.gender = ''
+    detection.emotion = ''
+    detection.glasses = ''
+    detection.head = ''
+    detection.facial_hair = ''
+  }
+
+  return { detection, setDetection, resetDetection }
 }
