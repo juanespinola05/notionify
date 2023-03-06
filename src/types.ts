@@ -27,6 +27,7 @@ export interface CloudinaryDetectionResponse {
       }
     }
   }
+  url: string
 }
 
 export type GlassesResponse = 'NoGlasses' | 'ReadingGlasses' | 'Sunglasses'
@@ -82,15 +83,23 @@ export interface BetaFaceAPITag {
   confidence: number
 }
 
-export interface HeadDataBetaFaceAPI {
-  face: {
-    tags: BetaFaceAPITag[]
+export interface BetaFaceAPIResponse {
+  media: {
+    faces: HeadDataBetaFaceAPI[]
   }
-  gender: GenderType
+}
+
+export interface HeadDataBetaFaceAPI {
+  tags: BetaFaceAPITag[]
 }
 
 export type HairLengthValue = 'none' | 'short' | 'very short' | 'average' | 'long' | 'very long'
 
 export interface IconProps {
   className?: string
+}
+
+export interface DownloadOptions {
+  size?: '300' | '1000'
+  format?: 'png' | 'jpg'
 }

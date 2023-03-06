@@ -1,7 +1,7 @@
 import { ENVIRONMENT } from '../constants/environment'
 import cloudinaryMockResponse from '../../detectionObjectMock.json'
 import betaFaceMockResponse from '../../detectionObjectMockBetaFace.json'
-import { CloudinaryDetectionResponse } from '../types'
+import { BetaFaceAPIResponse, CloudinaryDetectionResponse } from '../types'
 
 const { API_BASE_URL, CLOUD_NAME, PRESET_ID, NODE_ENV } = ENVIRONMENT
 
@@ -26,8 +26,7 @@ export async function uploadImage (file: any): Promise<CloudinaryDetectionRespon
     .then((res) => res).catch((err) => console.log(err))
 }
 
-export async function fetchBetaFace (imageUrl: string = 'http://betafaceapi.com/api_examples/sample.png'): Promise<CloudinaryDetectionResponse> {
-  // @ts-expect-error
+export async function fetchBetaFace (imageUrl: string = 'http://betafaceapi.com/api_examples/sample.png'): Promise<BetaFaceAPIResponse> {
   if (NODE_ENV === 'development') return betaFaceMockResponse
   return await fetch('https://www.betafaceapi.com/api/v2/media', {
     method: 'POST',

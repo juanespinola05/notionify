@@ -5,6 +5,7 @@ import useAvatarCanvas from '../hooks/useAvatarCanvas'
 import { useIllustrations } from '../context/illustration'
 import { svgComponents } from './SVG'
 import ExportModal from './ExportModal'
+import { ReactElement } from 'react'
 
 export default function ConfigBar (): React.ReactElement {
   return (
@@ -23,23 +24,23 @@ export default function ConfigBar (): React.ReactElement {
   )
 }
 
-function OutfitDropdown () {
-  const { list } = useIllustrations()
-  const { outfitOptions, outfitSelection, changeSelection } = useAvatarCanvas(list)
+function OutfitDropdown (): ReactElement {
+  const { setOutfit, outfitId } = useIllustrations()
+  const { outfitOptions } = useAvatarCanvas()
 
-  const OutfitsList = () => {
+  const OutfitsList = (): ReactElement => {
     return (
       <ul tabIndex={0} className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-screen max-w-xl flex-row gap-4'>
         {
-                  outfitOptions.map((option) => {
-                    const Element = svgComponents[option]
-                    return (
-                      <li key={option} onClick={() => changeSelection(option)} className={`overflow-hidden h-20 w-20 ${option === outfitSelection ? 'bg-gray-400 rounded-md' : ''}`}>
-                        <Element />
-                      </li>
-                    )
-                  })
-              }
+          outfitOptions.map((option) => {
+            const Element = svgComponents[option]
+            return (
+              <li key={option} onClick={() => setOutfit(option)} className={`overflow-hidden h-20 w-20 ${option === outfitId ? 'bg-gray-400 rounded-md' : ''}`}>
+                <Element />
+              </li>
+            )
+          })
+        }
       </ul>
     )
   }
@@ -54,20 +55,7 @@ function OutfitDropdown () {
   )
 }
 
-/*
-          outfitOptions.map(option => {
-            const Element = svgComponents[option]
-            return (
-              <div key={option} className={`overflow-hidden h-40 w-40 ${option === outfitSelection ? 'border-green-500 border-2' : ''}`}>
-                <button onClick={() => changeSelection(option)}>Elegir</button>
-                <Element />
-              </div>
-            )
-          })
-
- */
-
-function AccessoriesDropdown () {
+function AccessoriesDropdown (): ReactElement {
   return (
     <div className='dropdown dropdown-hover'>
       <label tabIndex={0} className='btn'>
