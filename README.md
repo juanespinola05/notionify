@@ -10,7 +10,7 @@ Este proyecto fue creado durante la hackathon organizada por Midudev, un evento 
 
 #### Acceso
 
-La aplicación está alojada en [notionify.vercel.com](https://notionify.vercel.app). Para acceder a ella, simplemente visite el sitio web y siga las instrucciones. La API que utiliza la aplicación se encuentra en [notion-avatar.deno.dev](https://notion-avatar.deno.dev/), si desea consultar más detalles sobre cómo funciona.
+La aplicación está alojada en [notionify.vercel.app](https://notionify.vercel.app). Para acceder a ella, simplemente visite el sitio web y siga las instrucciones. La API que utiliza la aplicación se encuentra en [notion-avatar.deno.dev](https://notion-avatar.deno.dev/), si desea consultar más detalles sobre cómo funciona.
 
 #### Desarrolladores
 
