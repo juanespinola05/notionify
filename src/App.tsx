@@ -2,6 +2,7 @@ import { ReactElement } from 'react'
 import ErrorAlert from './components/ErrorAlert'
 import Section from './layout/Section'
 import SectionCreator from './sections/Creator'
+import Footer from './sections/Footer'
 import Hero from './sections/Hero'
 
 function App (): ReactElement {
@@ -12,6 +13,7 @@ function App (): ReactElement {
         <Hero />
         <SectionCreator />
         <Section className='w-full bg-gray-200' />
+        <Footer />
       </main>
     </>
   )
