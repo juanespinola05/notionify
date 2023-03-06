@@ -1,1 +1,1 @@
-export const DROPPER_LOADING_TEXT_LIST = ['Extrayendo archivo...', 'Leyendo documentos...', 'Generando analisis...', 'Banca un toque...']
+export const DROPPER_LOADING_TEXT_LIST = ['Extracting file...', 'Reading documents...', 'Generating analysis...', 'Wait a sec 😳...']

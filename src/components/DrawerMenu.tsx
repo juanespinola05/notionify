@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 
-export default function DrawerMenu () {
+export default function DrawerMenu (): ReactElement {
   const [isOpen, setIsOpen] = useState(true)
 
   return (

@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useState } from 'react'
+import { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useDropzone, DropzoneOptions } from 'react-dropzone'
 import { DROPPER_LOADING_TEXT_LIST } from '../config'
 import { useError } from '../context/error'
@@ -89,24 +89,28 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
 
 const Loader = (): JSX.Element => {
   return (
-    <div className='relative w-64 h-6w-64'>
-      <img className='w-full h-full absolute animated' src='src/assets/1.svg' alt='' />
-      <img className='w-full h-full absolute animated' src='src/assets/2.svg' alt='' />
-      <img className='w-full h-full absolute animated' src='src/assets/3.svg' alt='' />
-      <img className='w-full h-full absolute animated' src='src/assets/4.svg' alt='' />
+    <div className='relative w-64 h-64 rounded-full loader-3d'>
+      <img className='w-full h-full' src='src/assets/3.svg' alt='' />
+      <img className='w-full h-full' src='src/assets/4.svg' alt='' />
     </div>
   )
 }
 
 const TextLoader = (): JSX.Element => {
+  const [textIndex, setTextIndex] = useState(0)
+
+  const next = (index: number): number => index === DROPPER_LOADING_TEXT_LIST.length ? 0 : ++index
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTextIndex(prev => next(prev))
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [])
   return (
     <div className='w-full h-8 relative bg-blue-00 overflow-hidden'>
-      {
-        DROPPER_LOADING_TEXT_LIST.map((text) => (
-          <p className='text-red-700 text-center line-up' key={text}>{text}</p>
-        ))
-
-      }
+      <p className='text-red-700 text-center line-up'>{DROPPER_LOADING_TEXT_LIST[textIndex]}</p>
     </div>
   )
 }
