@@ -4,6 +4,7 @@ import Hanger from '../assets/icons/Hanger'
 import useAvatarCanvas from '../hooks/useAvatarCanvas'
 import { useIllustrations } from '../context/illustration'
 import { svgComponents } from './SVG'
+import ExportModal from './ExportModal'
 
 export default function ConfigBar (): React.ReactElement {
   return (
@@ -13,9 +14,11 @@ export default function ConfigBar (): React.ReactElement {
         <AccessoriesDropdown />
 
       </div>
-      <button className='btn'>
-        <Download className='w-6 h-6' />
-      </button>
+      <ExportModal label={<Download className='w-6 h-6' />}>
+        <div>
+          holiiii
+        </div>
+      </ExportModal>
     </nav>
   )
 }
