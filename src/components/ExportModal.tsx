@@ -6,12 +6,15 @@ interface ModalProps {
   children?: ReactNode | ReactNode[]
 }
 
-const EXPORT_SIZES = ['300', '1000']
-const EXPORT_FORMATS = ['png', 'jpg']
+type AllowedFormats = 'png' | 'jpg'
+type AllowedSizes = '300' | '1000'
+
+const EXPORT_SIZES: AllowedSizes[] = ['300', '1000']
+const EXPORT_FORMATS: AllowedFormats[] = ['png', 'jpg']
 
 export default function ExportModal ({ label }: ModalProps): React.ReactElement {
-  const [selectedSize, setSelectedSize] = useState('')
-  const [selectedFormat, setSelectedFormat] = useState('')
+  const [selectedSize, setSelectedSize] = useState<AllowedSizes>('300')
+  const [selectedFormat, setSelectedFormat] = useState<AllowedFormats>('png')
   const { handleDownload } = useAvatarCanvas()
 
   return (
@@ -41,7 +44,7 @@ export default function ExportModal ({ label }: ModalProps): React.ReactElement 
               }
             </div>
           </div>
-          <button disabled={!selectedSize || !selectedFormat} onClick={() => handleDownload({ format: selectedFormat, size: selectedSize })} className='btn text-white mt-6 w-full border-none hover:bg-blue-400 bg-blue-400'>Download</button>
+          <button disabled={(selectedSize.length === 0) || (selectedFormat.length === 0)} onClick={() => handleDownload({ format: selectedFormat, size: selectedSize })} className='btn text-white mt-6 w-full border-none hover:bg-blue-400 bg-blue-400'>Download</button>
 
         </div>
       </div>

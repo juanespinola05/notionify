@@ -5,8 +5,8 @@ const MINUTE = SECOND * 60
 const HOUR = MINUTE * 60
 const DAY = HOUR * 24
 
-export function useCountdown (deadline, interval = SECOND) {
-  const [timespan, setTimespan] = useState(new Date(deadline) - Date.now())
+export function useCountdown (deadline: Date, interval = SECOND): Record<string, number> {
+  const [timespan, setTimespan] = useState(new Date(deadline).getTime() - Date.now())
 
   useEffect(() => {
     const intervalId = setInterval(() => {
