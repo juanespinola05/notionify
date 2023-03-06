@@ -1,6 +1,6 @@
 import { DownloadOptions } from '../types'
 
-const BASE_API_URL = 'https://avatar-notion.deno.dev'
+const BASE_API_URL = 'https://notion-avatar.deno.dev'
 
 interface AvatarUrlBuilder extends DownloadOptions {
   illustrationIdList: string[]

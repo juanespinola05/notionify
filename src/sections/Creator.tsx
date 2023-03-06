@@ -7,6 +7,7 @@ import { CloudinaryDetectionResponse } from '../types'
 import { useIllustrations } from '../context/illustration'
 import Canvas from '../components/Canvas'
 import ConfigBar from '../components/ConfigBar'
+import DrawerMenu from '../components/DrawerMenu'
 import { ReactNode } from 'react'
 
 export default function SectionCreator (): React.ReactElement {
@@ -30,7 +31,9 @@ export default function SectionCreator (): React.ReactElement {
   return (
     <Section className='bg-white w-full grid place-items-center gap-48 relative'>
       {hasList && <ConfigBar />}
-      {/* <ConfigBar /> */}
+      <ConfigBar />
+      {/* <DrawerMenu/> */}
+
       <div className='grid pt-36 w-full place-items-center' id='creator'>
 
         <IllustrationWrapper hasList={hasList}>
