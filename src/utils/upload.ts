@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-throw-literal */
 import { ENVIRONMENT } from '../constants/environment'
 import cloudinaryMockResponse from '../../detectionObjectMock.json'
 import betaFaceMockResponse from '../../detectionObjectMockBetaFace.json'
@@ -7,7 +8,22 @@ const { API_BASE_URL, CLOUD_NAME, PRESET_ID, NODE_ENV } = ENVIRONMENT
 
 const isProduction = NODE_ENV === 'production'
 
-export async function uploadImage (file: any): Promise<CloudinaryDetectionResponse> {
+interface APIResponses {
+  cloudinaryData: CloudinaryDetectionResponse
+  betaFaceData: BetaFaceAPIResponse
+}
+
+export async function uploadImage (file: File): Promise<APIResponses> {
+  const cloudinaryResponse = await uploadToCloudinary(file)
+  const betaFaceResponse = await fetchBetaFace(cloudinaryResponse.url)
+
+  return {
+    cloudinaryData: cloudinaryResponse,
+    betaFaceData: betaFaceResponse
+  }
+}
+
+export async function uploadToCloudinary (file: any): Promise<CloudinaryDetectionResponse> {
   // @ts-expect-error
   if (!isProduction) return cloudinaryMockResponse
   const formData = new FormData()
@@ -20,15 +36,17 @@ export async function uploadImage (file: any): Promise<CloudinaryDetectionRespon
     method: 'POST',
     body: formData
   }
+  const res = await fetch(UPLOAD_IMAGE_URL, fetchConfig)
+  const data = await res.json()
 
-  return await fetch(UPLOAD_IMAGE_URL, fetchConfig)
-    .then(async response => await response.json())
-    .then((res) => res).catch((err) => console.log(err))
+  if (!res.ok) throw { message: data.error.message, statusCode: res.status }
+
+  return data
 }
 
 export async function fetchBetaFace (imageUrl: string = 'http://betafaceapi.com/api_examples/sample.png'): Promise<BetaFaceAPIResponse> {
   if (NODE_ENV === 'development') return betaFaceMockResponse
-  return await fetch('https://www.betafaceapi.com/api/v2/media', {
+  const fetchConfig = {
     method: 'POST',
     headers: {
       accept: 'application/json',
@@ -41,8 +59,11 @@ export async function fetchBetaFace (imageUrl: string = 'http://betafaceapi.com/
       recognize_targets: ['all@mynamespace'],
       original_filename: 'sample.png'
     })
-  })
-    .then(async (response) => await response.json())
-    .then(data => data)
-    .catch((error) => console.log(error))
+  }
+  const res = await fetch('https://www.betafaceapi.com/api/v2/media', fetchConfig)
+  const data = await res.json()
+
+  if (!res.ok) throw { message: data.error_description, status: res.status }
+
+  return data
 }
