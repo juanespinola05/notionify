@@ -5,3 +5,5 @@ export const ENVIRONMENT = {
   NODE_ENV: import.meta.env.VITE_NODE_ENV ?? 'production',
   FEATURE_COUNTDOWN: import.meta.env.VITE_FEATURE_COUNTDOWN ?? false
 }
+
+export const IS_FEATURE_COUNTDOWN = ENVIRONMENT.FEATURE_COUNTDOWN === 'true'
