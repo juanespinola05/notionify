@@ -5,7 +5,12 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      backgroundImage: {
+        heroBackground: 'url(assets/hero_bg.svg)',
+        creatorBackground: 'url(assets/creator_bg.svg)'
+      }
+    }
   },
   plugins: [require('daisyui')]
 }

@@ -1,4 +1,3 @@
-import Download from '../assets/icons/Download'
 import Stars from '../assets/icons/Stars'
 import Hanger from '../assets/icons/Hanger'
 import useAvatarCanvas from '../hooks/useAvatarCanvas'
@@ -7,17 +6,18 @@ import { svgComponents } from './SVG'
 import ExportModal from './ExportModal'
 import { ReactElement } from 'react'
 
-export default function ConfigBar (): React.ReactElement {
+export default function ConfigBar (): ReactElement {
   const { setOutfit, outfitId } = useIllustrations()
   const { outfitOptions } = useAvatarCanvas()
 
   return (
-    <nav className=' rounded-lg w-full max-w-xl absolute left-0 top-5 flex items-center p-2 justify-between'>
-      <div className='grid gap-2 items-center'>
+    <nav className='rounded-lg overflow-hidden p-2 max-w-xs sm:max-w-lg'>
+      <div className='flex flex-col gap-2 w-full px-2'>
         {/* <OutfitDropdown /> */}
 
-        <ul tabIndex={0} className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-screen max-w-sm flex-row gap-4'>
-          {
+        <div className='rounded-box bg-white border-2 border-black overflow-x-scroll scroll-smooth'>
+          <ul tabIndex={0} className='p-2 shadow overflow-x-scroll flex w-max'>
+            {
           outfitOptions.map((option) => {
             const Element = svgComponents[option]
             return (
@@ -27,7 +27,8 @@ export default function ConfigBar (): React.ReactElement {
             )
           })
         }
-        </ul>
+          </ul>
+        </div>
         <ExportModal label={<span className='flex gap-2 items-center text-white'>Download </span>} />
 
       </div>

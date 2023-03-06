@@ -5,7 +5,43 @@
 html{
     scroll-behavior: smooth !important;
 }
-  
+
+.vertical-rotate {
+  transform: rotateY(180deg);
+}
+
+.loader-3d {
+  animation: flip 2s infinite;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  border: 1px solid black;
+}
+
+.loader-3d img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  backface-visibility: hidden;
+}
+.loader-3d img:first-child {
+  transform: perspective(600px) rotateY(0deg);
+}
+
+.loader-3d img:last-child {
+  transform: perspective(600px) rotateY(180deg);
+}
+
+@keyframes flip {
+  from {
+    transform: perspective(600px) rotateY(0deg);
+  } to {
+    transform: perspective(600px) rotateY(360deg);
+  }
+}
 
 .line-up {
   animation: line-up 3s infinite;
@@ -23,8 +59,11 @@ html{
     opacity: 1;
     transform: translateY(30%);
   }
-  100% {
+  90% {
     opacity: 1;
+  }
+  100% {
+    opacity: 0;
     transform: translateY(0%);
   }
 }
