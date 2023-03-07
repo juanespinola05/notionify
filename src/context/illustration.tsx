@@ -4,6 +4,7 @@ import { CONFIG_OUTFIT_ID } from '../constants'
 const BACKGROUND_ID = 'background'
 const DEFAULT_OUTFIT_ID = '5_outfit_1'
 
+const CLEAR_ILLUSTRATIONS_LIST = 'CLEAR_ILLUSTRATIONS_LIST'
 const SET_ID_LIST = 'SET_ID_LIST'
 const TOGGLE_BACKGROUND_ID = 'TOGGLE_BACKGROUND_ID'
 const SET_OUTFIT_ID = 'SET_OUTFIT_ID'
@@ -40,6 +41,8 @@ function illustrationsReducer (state: State, action: any): State {
 
     case SET_CONFIG_ID:
       return { ...state, configId: action.payload }
+    case CLEAR_ILLUSTRATIONS_LIST:
+      return initialState
     default:
       return state
   }
@@ -61,6 +64,7 @@ interface IllustrationsHook extends State {
   toggleBackground: () => void
   setOutfit: (id: string) => void
   setAccessory: (id: string) => void
+  resetIllustrations: () => void
 }
 interface IllustrationConfigHook {
   configId: string
@@ -98,13 +102,18 @@ function useIllustrations (): IllustrationsHook {
     dispatch({ type: SET_ACCESSORY_ID, payload: id })
   }
 
+  const resetIllustrations = (): void => {
+    dispatch({ type: CLEAR_ILLUSTRATIONS_LIST })
+  }
+
   return {
     ...state,
     illustrationIdList: list,
     setIllustrationsIDList,
     toggleBackground,
     setOutfit,
-    setAccessory
+    setAccessory,
+    resetIllustrations
   }
 }
 
