@@ -11,7 +11,7 @@ const JUANSE: DevData = {
   github: 'juanespinola05',
   linkedin: 'juanse05',
   name: 'Juan Espínola',
-  description: 'Desarrollador Java',
+  description: 'Fullstack JavaScript Developer',
   Icon: JuanseAvatar
 }
 
