@@ -1,4 +1,4 @@
-# Notionize
+# Notionify
 
 Bienvenido a nuestro proyecto de generador de avatares al estilo Notion. Esta es una aplicación web que utiliza una API de Cloudinary que emplea reconocimiento facial avanzado para crear avatares personalizados y únicos.
 

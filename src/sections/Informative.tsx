@@ -7,7 +7,7 @@ export default function Informative (): ReactElement {
   return (
     <Section className='bg-white border-t-4 border-black pt-16 pb-10 md:pb-0 min-h-min md:min-h-[800px]'>
       <div className='md:grid h-full md:items-end justify-items-center'>
-        <h2 className='text-black text-center text-3xl font-bold self-start'>What can Notionize do for me?</h2>
+        <h2 className='text-black text-center text-3xl font-bold self-start'>What can Notionify do for me?</h2>
         <div className='relative mt-12 px-10 sm:px-16 md:p-0 grid md:block grid-cols-1 gap-4 sm:grid-cols-3 place-items-stretch'>
           <InfoCard className='-left-10'>
             <h5 className='font-bold'>Happy or sad? maybe nervous? or angry?</h5>
