@@ -66,6 +66,6 @@ This software uses the following open source packages:
 
 ## Feedback
 
-Feel free to send us feedback on [Rodri Twitter](https://twitter.com/rodrialfonso6) | [Juanse Twitter](https://twitter.com/rodrialfonso6)  or even [file an issue](https://github.com/juanespinola05/notionify/issues/new). Feature requests are always welcome :) 
+Feel free to send us feedback on [Rodri Twitter](https://twitter.com/rodrialfonso6) | [Juanse Linkedin](https://linkedin.com/in/juanse05)  or even [file an issue](https://github.com/juanespinola05/notionify/issues/new). Feature requests are always welcome :) 
 
-#### Thanks to use Notionify. 
+#### Thanks for using Notionify. 
