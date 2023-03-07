@@ -10,7 +10,7 @@ function Canvas ({ width = 306, height = 306 }: IProps): ReactElement {
   const { svgToRender, hasBackground } = useAvatarCanvas()
 
   return (
-    <div className={`relative m-auto overflow-hidden w-64 h-64 ${hasBackground ? 'clip-illustration' : ''}`}>
+    <div className={`relative m-auto overflow-hidden w-80 h-80 ${hasBackground ? 'clip-illustration' : ''}`}>
       {
           svgToRender.map((Svg, index) => {
             // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions

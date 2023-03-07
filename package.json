@@ -8,8 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src/",
-    "lint:fix": "eslint src/ --fix",
-    "generate-svg": "deno run -A scripts/generateSvgComponent.ts"
+    "lint:fix": "eslint src/ --fix"
   },
   "dependencies": {
     "daisyui": "^2.51.3",

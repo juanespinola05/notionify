@@ -3,16 +3,20 @@ import { svgComponents } from '../components/SVG'
 import { useIllustrations } from '../context/illustration'
 import { DownloadOptions } from '../types'
 import { buildAvatarUrl } from '../utils/export'
+import { CONFIG_OUTFIT_ID, CONFIG_ACCESORY_ID } from '../constants'
 
-const outfitEntries = Object.entries(svgComponents).filter(([key]) => key.includes('outfit'))
+const outfitEntries = Object.entries(svgComponents).filter(([key]) => key.includes(CONFIG_OUTFIT_ID))
 const outfitKeys = outfitEntries.map(([key]) => key)
 
-// const IMAGE_DOWNLOAD_FORMAT = 'image/png'
+const accessoryEntries = Object.entries(svgComponents).filter(([key]) => key.includes(CONFIG_ACCESORY_ID))
+const accessoryKeys = accessoryEntries.map(([key]) => key)
+
 interface AvatarCanvas {
   svgToRender: FC[]
   handleDownload: (options: DownloadOptions) => void
   hasBackground: boolean
   outfitOptions: string[]
+  accessoryOptions: string[]
 }
 
 export default function useAvatarCanvas (): AvatarCanvas {
@@ -36,6 +40,7 @@ export default function useAvatarCanvas (): AvatarCanvas {
     svgToRender,
     handleDownload,
     outfitOptions: outfitKeys,
+    accessoryOptions: accessoryKeys,
     hasBackground
   }
 }

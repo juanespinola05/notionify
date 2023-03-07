@@ -5,7 +5,7 @@ import { useDetection } from '../hooks/useDetection'
 import { mapDetailsToSvg } from '../utils/svg'
 import { useIllustrations } from '../context/illustration'
 import Canvas from '../components/Canvas'
-import ConfigBar from '../components/ConfigBar'
+import Selector from '../components/Selector'
 import { ReactNode } from 'react'
 import { useError } from '../context/error'
 import { handleError } from '../utils/error'
@@ -34,7 +34,8 @@ export default function SectionCreator (): React.ReactElement {
   return (
     <Section id='creator' className='bg-white bg-creatorBackground bg-cover bg-center w-full grid items-center relative py-2'>
       <div className='flex flex-col items-center gap-4'>
-        <Menu />
+        {hasList && <Menu />}
+
         <IllustrationWrapper hasList={hasList}>
           {
             hasList
@@ -42,15 +43,7 @@ export default function SectionCreator (): React.ReactElement {
               : <Dropper handleDrop={handleDrop} />
           }
         </IllustrationWrapper>
-        {hasList && <ConfigBar />}
-        {/* <DrawerMenu/> */}
-
-        <button
-          className='btn btn-active text-white'
-          onClick={() => setIllustrationsIDList(mapDetailsToSvg(detection))}
-        >
-          Regenerar
-        </button>
+        {hasList && <Selector />}
       </div>
     </Section>
   )
@@ -67,13 +60,13 @@ function IllustrationWrapper (
         !hasList && (
           <>
             <div className='bg-white w-20 h-1w-20 absolute top-24 left-0 rounded-full'>
-              <img src='src/assets/wrapper_1.svg' alt='' className='opacity-30' />
+              <img src='/creator/wrapper_1.svg' alt='' className='opacity-30' />
             </div>
             <div className='bg-white w-12 h-12 absolute top-6 right-6 rounded-full'>
-              <img src='src/assets/wrapper_2.svg' alt='' className='opacity-30' />
+              <img src='/creator/wrapper_2.svg' alt='' className='opacity-30' />
             </div>
             <div className='bg-white w-16 h-16 absolute top-48 right-0 rounded-full'>
-              <img src='src/assets/wrapper_3.svg' alt='' className='opacity-30' />
+              <img src='/creator/wrapper_3.svg' alt='' className='opacity-30' />
             </div>
             <div className='w-10 h-10 bg-gray-400 rounded-full absolute top-4 left-10' />
             <div className='w-10 h-10 bg-gray-300 rounded-full absolute top-24 right-2' />
