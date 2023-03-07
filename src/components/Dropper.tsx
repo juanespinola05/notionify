@@ -52,7 +52,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
             ? <Loader />
             : (
               <img
-                src={`src/assets/${isDragReject ? 'angry' : (isDragActive ? '5' : '1')}.svg`}
+                src={`/creator/${isDragReject ? 'angry' : (isDragActive ? '5' : '1')}.svg`}
                 alt=''
                 className={`w-full h-full opacity-30  ${isDragActive ? 'opacity-80' : ''}`}
               />

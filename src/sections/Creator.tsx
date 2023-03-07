@@ -60,13 +60,13 @@ function IllustrationWrapper (
         !hasList && (
           <>
             <div className='bg-white w-20 h-1w-20 absolute top-24 left-0 rounded-full'>
-              <img src='src/assets/wrapper_1.svg' alt='' className='opacity-30' />
+              <img src='/creator/wrapper_1.svg' alt='' className='opacity-30' />
             </div>
             <div className='bg-white w-12 h-12 absolute top-6 right-6 rounded-full'>
-              <img src='src/assets/wrapper_2.svg' alt='' className='opacity-30' />
+              <img src='/creator/wrapper_2.svg' alt='' className='opacity-30' />
             </div>
             <div className='bg-white w-16 h-16 absolute top-48 right-0 rounded-full'>
-              <img src='src/assets/wrapper_3.svg' alt='' className='opacity-30' />
+              <img src='/creator/wrapper_3.svg' alt='' className='opacity-30' />
             </div>
             <div className='w-10 h-10 bg-gray-400 rounded-full absolute top-4 left-10' />
             <div className='w-10 h-10 bg-gray-300 rounded-full absolute top-24 right-2' />
