@@ -32,17 +32,17 @@ export default function Selector (): React.ReactElement {
         <ul tabIndex={0} className='p-2 shadow overflow-x-scroll flex items-center gap-2 w-max'>
           {!isOutfitSelected && <BlockedButton />}
           {
-          options.map((option) => {
-            const Element = svgComponents[option]
-            return (
-              <li key={option}>
-                <button onClick={() => handleSelect(option)} className={`overflow-hidden rounded-xl hover:bg-gray-100 cursor-pointer h-20 w-20 ${option === outfitId || option === accessoryId ? 'bg-gray-200 hover:bg-gray-200 rounded-md' : ''}`}>
-                  <Element />
-                </button>
-              </li>
-            )
-          })
-        }
+      options.map((option) => {
+        const Element = svgComponents[option]
+        return (
+          <li key={option}>
+            <button onClick={() => handleSelect(option)} className={`overflow-hidden rounded-xl hover:bg-gray-100 cursor-pointer h-20 w-20 ${option === outfitId || option === accessoryId ? 'bg-gray-200 hover:bg-gray-200 rounded-md' : ''}`}>
+              <Element />
+            </button>
+          </li>
+        )
+      })
+    }
         </ul>
       </div>
 
