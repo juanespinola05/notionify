@@ -32,8 +32,8 @@ export default function SectionCreator (): React.ReactElement {
     }
   }
   return (
-    <Section className='bg-white bg-creatorBackground bg-cover bg-center w-full grid items-center relative py-2'>
-      <div className='flex flex-col items-center gap-14'>
+    <Section id='creator' className='bg-white bg-creatorBackground bg-cover bg-center w-full grid items-center relative py-2'>
+      <div className='flex flex-col items-center gap-4'>
         <Menu />
         <IllustrationWrapper hasList={hasList}>
           {
