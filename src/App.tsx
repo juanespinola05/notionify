@@ -6,6 +6,7 @@ import Hero from './sections/Hero'
 import { IS_FEATURE_COUNTDOWN } from './constants/environment'
 import Countdown from './sections/Countdown'
 import Informative from './sections/Informative'
+import About from './sections/About'
 
 function App (): ReactElement {
   if (IS_FEATURE_COUNTDOWN) return <Countdown />
@@ -17,6 +18,7 @@ function App (): ReactElement {
         <Hero />
         <SectionCreator />
         <Informative />
+        <About />
         <Footer />
       </main>
     </>
