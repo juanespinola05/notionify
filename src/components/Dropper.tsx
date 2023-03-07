@@ -44,7 +44,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
 
   return (
     <div className='grid gap-4 place-items-center'>
-      <div {...getRootProps()} className='transition-all w-64 h-64 bg-white rounded-full grid place-items-center'>
+      <div {...getRootProps()} className='transition-all w-80 h-80 bg-white rounded-full grid place-items-center'>
         <input {...getInputProps()} />
 
         {
@@ -52,7 +52,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
             ? <Loader />
             : (
               <img
-                src={`src/assets/${isDragReject ? 'angry' : (isDragActive ? '5' : '1')}.svg`}
+                src={`/creator/${isDragReject ? 'angry' : (isDragActive ? '5' : '1')}.svg`}
                 alt=''
                 className={`w-full h-full opacity-30  ${isDragActive ? 'opacity-80' : ''}`}
               />
@@ -80,7 +80,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
                     <div className='border-t-2 w-16 border-current' />
                   </div>
 
-                  <button onClick={() => open()} className='w-32 border-2 border-black py-1.5 px-4 text-black underline rounded-lg hover:outline-2 hover:outline-double hover:outline-slate-600'>Browse file</button>
+                  <button onClick={() => open()} className='w-32 border-2 border-black py-1.5 px-4 text-black underline rounded-lg font-semibold hover:bg-gray-900 hover:text-white transition-all'>Browse file</button>
                 </div>
                 )
           }

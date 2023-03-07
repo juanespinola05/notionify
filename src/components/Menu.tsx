@@ -9,7 +9,7 @@ const ACCESORY_ICON_ID = 'accessory'
 
 export default function Menu (): ReactElement {
   const { detection } = useDetection()
-  const { setIllustrationsIDList } = useIllustrations()
+  const { setIllustrationsIDList, resetIllustrations } = useIllustrations()
   const { setConfigId, configId } = useIllustrationConfig()
 
   return (
@@ -43,6 +43,14 @@ export default function Menu (): ReactElement {
         </svg>
 }
       />
+      <li>
+        <button data-tip='Borrar' className='tooltip active:bg-black' onClick={() => resetIllustrations()}>
+          <svg width='38' height='40' viewBox='0 0 38 40' fill='none' className='w-5 h-5 text-gray-400' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M7.65 39.45C6.3346 39.45 5.21408 38.9921 4.28845 38.0763C3.36282 37.1604 2.9 36.0517 2.9 34.75V7.1H0V2.4H11.55V0H26.4V2.4H38V7.1H35.1V34.75C35.1 36.0517 34.6372 37.1604 33.7116 38.0763C32.786 38.9921 31.6654 39.45 30.35 39.45H7.65ZM12.7 30.85H16.55V10.9H12.7V30.85ZM21.45 30.85H25.35V10.9H21.45V30.85Z' fill='currentColor' />
+          </svg>
+
+        </button>
+      </li>
     </ul>
   )
 }
