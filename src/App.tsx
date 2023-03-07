@@ -12,16 +12,16 @@ function App (): ReactElement {
   if (IS_FEATURE_COUNTDOWN) return <Countdown />
 
   return (
-    <main className='w-full'>
+    <>
       <ErrorAlert />
-      <div className='grid m-auto w-full max-w-screen-2xl'>
+      <div className='grid m-auto'>
         <Hero />
         <SectionCreator />
         <Informative />
         <About />
         <Footer />
       </div>
-    </main>
+    </>
   )
 }
 
