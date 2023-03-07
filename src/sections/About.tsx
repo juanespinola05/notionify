@@ -11,7 +11,7 @@ const JUANSE: DevData = {
   github: 'juanespinola05',
   linkedin: 'juanse05',
   name: 'Juan Espínola',
-  description: 'Desarrollador Java',
+  description: 'Fullstack JavaScript Developer',
   Icon: JuanseAvatar
 }
 
@@ -20,7 +20,7 @@ const RODRIGO: DevData = {
   github: 'rodri-alfonso',
   linkedin: 'rodrigo-alfonso-',
   name: 'Rodrigo Alfonso',
-  description: 'Desarrollador Java',
+  description: 'Frontend Engineer | UI Developer',
   Icon: RodrigoAvatar
 }
 
@@ -55,14 +55,14 @@ function Info ({
 }: IProps): ReactElement {
   return (
     <article className={`grid place-content-center ${className}`}>
-      <div className={`flex md:flex-col items-center gap-6 ${reverse ? 'max-md:flex-row-reverse' : ''}`}>
+      <div className='flex md:flex-col items-center gap-6 md:text-center '>
         <div>
           <Icon width={200} height={200} />
         </div>
-        <div className='flex flex-col gap-4 justify-between'>
+        <div className='flex flex-col gap-4 md:items-center sm:items-start justify-between'>
           <div>
-            <h3 className='font-bold text-xl'>{name}</h3>
-            <p>{description}</p>
+            <h3 className='font-bold text-xl md:!text-center sm:!text-left'>{name}</h3>
+            <p className='font-medium sm:!text-left'>{description}</p>
           </div>
           <ul className='flex gap-2'>
             <li>

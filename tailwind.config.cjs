@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         heroBackground: 'url(assets/hero_bg.svg)',
-        creatorBackground: 'url(assets/creator_bg.svg)'
+        creatorBackground: 'url(assets/creator_bg_2.svg)'
       }
     }
   },

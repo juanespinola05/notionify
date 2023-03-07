@@ -20,7 +20,7 @@ export default function ExportModal ({ label }: ModalProps): React.ReactElement 
   return (
     <>
       <div data-tip='Download' className='tooltip'>
-        <label htmlFor='my-modal-3' className='btn bg-gray-900 border-none hover:bg-gray-900 rounded-full'>{label}</label>
+        <label htmlFor='my-modal-3' className='btn bg-gray-200 border-none hover:bg-gray-300 rounded-none'>{label}</label>
       </div>
 
       <input type='checkbox' id='my-modal-3' className='modal-toggle' />
@@ -46,8 +46,7 @@ export default function ExportModal ({ label }: ModalProps): React.ReactElement 
               }
             </div>
           </div>
-          <button disabled={(selectedSize.length === 0) || (selectedFormat.length === 0)} onClick={() => handleDownload({ format: selectedFormat, size: selectedSize })} className='btn text-white mt-6 w-full border-none hover:bg-blue-400 bg-blue-400'>Download</button>
-
+          <button disabled={(selectedSize.length === 0) || (selectedFormat.length === 0)} onClick={() => handleDownload({ format: selectedFormat, size: selectedSize })} className='btn text-white mt-6 w-full border-none'>Download</button>
         </div>
       </div>
     </>

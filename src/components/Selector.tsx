@@ -27,7 +27,7 @@ export default function Selector (): React.ReactElement {
   }
 
   return (
-    <section className='rounded-lg overflow-hidden p-2 absolute bottom-7 max-w-xs sm:max-w-lg'>
+    <section className='rounded-lg overflow-hidden p-2 absolute bottom-7 max-w-xs sm:max-w-lg slide-up'>
       <div className='rounded-box bg-white border-2 border-black overflow-x-scroll scroll-smooth'>
         <ul tabIndex={0} className='p-2 shadow overflow-x-scroll flex items-center gap-2 w-max'>
           {!isOutfitSelected && <BlockedButton />}

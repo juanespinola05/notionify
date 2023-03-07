@@ -6,7 +6,6 @@ import { mapDetailsToSvg } from '../utils/svg'
 import { useIllustrations } from '../context/illustration'
 import Canvas from '../components/Canvas'
 import Selector from '../components/Selector'
-import { ReactNode } from 'react'
 import { useError } from '../context/error'
 import { handleError } from '../utils/error'
 import Menu from '../components/Menu'
@@ -34,47 +33,12 @@ export default function SectionCreator (): React.ReactElement {
   return (
     <Section id='creator' className='bg-white bg-creatorBackground bg-cover bg-center w-full grid items-center relative py-2'>
       <div className='flex flex-col items-center gap-4'>
-        {hasList && <Menu />}
-
-        <IllustrationWrapper hasList={hasList}>
-          {
-            hasList
-              ? <Canvas />
-              : <Dropper handleDrop={handleDrop} />
+        {
+          hasList
+            ? <><Menu /><Canvas /><Selector /></>
+            : <Dropper handleDrop={handleDrop} />
           }
-        </IllustrationWrapper>
-        {hasList && <Selector />}
       </div>
     </Section>
-  )
-}
-
-function IllustrationWrapper (
-  { children, hasList }: { children: ReactNode, hasList: boolean }
-): React.ReactElement {
-  return (
-    <div className='relative w-full max-w-xs sm:max-w-md overflow-hidden'>
-      {children}
-
-      {
-        !hasList && (
-          <>
-            <div className='bg-white w-20 h-1w-20 absolute top-24 left-0 rounded-full'>
-              <img src='src/assets/wrapper_1.svg' alt='' className='opacity-30' />
-            </div>
-            <div className='bg-white w-12 h-12 absolute top-6 right-6 rounded-full'>
-              <img src='src/assets/wrapper_2.svg' alt='' className='opacity-30' />
-            </div>
-            <div className='bg-white w-16 h-16 absolute top-48 right-0 rounded-full'>
-              <img src='src/assets/wrapper_3.svg' alt='' className='opacity-30' />
-            </div>
-            <div className='w-10 h-10 bg-gray-400 rounded-full absolute top-4 left-10' />
-            <div className='w-10 h-10 bg-gray-300 rounded-full absolute top-24 right-2' />
-            <div className='w-8 h-8 bg-gray-200 rounded-full absolute top-56 left-10' />
-          </>
-
-        )
-      }
-    </div>
   )
 }
