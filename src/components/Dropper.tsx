@@ -50,7 +50,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
 
   const Rules = (): ReactElement => {
     return (
-      <p className='flex flex-col items-center '>
+      <div className='flex flex-col items-center '>
         {
         isDragReject
           ? (
@@ -61,7 +61,7 @@ export default function Dropper ({ handleDrop }: DropperProps): ReactElement {
             )
           : <SupportContent />
       }
-      </p>
+      </div>
     )
   }
 
