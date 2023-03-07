@@ -1,4 +1,4 @@
-import { ENVIRONMENT } from '../constants/environment'
+import { ENVIRONMENT } from '../constants'
 
 const isProduction = ENVIRONMENT.NODE_ENV === 'production'
 

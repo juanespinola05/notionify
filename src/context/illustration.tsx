@@ -1,4 +1,5 @@
 import { useReducer, createContext, useContext } from 'react'
+import { CONFIG_OUTFIT_ID } from '../constants'
 
 const BACKGROUND_ID = 'background'
 const DEFAULT_OUTFIT_ID = '5_outfit_1'
@@ -8,18 +9,22 @@ const TOGGLE_BACKGROUND_ID = 'TOGGLE_BACKGROUND_ID'
 const SET_OUTFIT_ID = 'SET_OUTFIT_ID'
 const SET_ACCESSORY_ID = 'SET_ACCESSORY_ID'
 
+const SET_CONFIG_ID = 'SET_CONFIG_ID'
+
 interface State {
   illustrationIdList: string[]
   hasBackground: boolean
   outfitId: string
   accessoryId: string
+  configId: string
 }
 
 const initialState: State = {
   illustrationIdList: [],
   hasBackground: true,
   outfitId: DEFAULT_OUTFIT_ID,
-  accessoryId: ''
+  accessoryId: '',
+  configId: CONFIG_OUTFIT_ID
 }
 
 function illustrationsReducer (state: State, action: any): State {
@@ -32,6 +37,9 @@ function illustrationsReducer (state: State, action: any): State {
       return { ...state, outfitId: action.payload }
     case SET_ACCESSORY_ID:
       return { ...state, accessoryId: action.payload }
+
+    case SET_CONFIG_ID:
+      return { ...state, configId: action.payload }
     default:
       return state
   }
@@ -53,6 +61,10 @@ interface IllustrationsHook extends State {
   toggleBackground: () => void
   setOutfit: (id: string) => void
   setAccessory: (id: string) => void
+}
+interface IllustrationConfigHook {
+  configId: string
+  setConfigId: (id: string) => void
 }
 
 function useIllustrations (): IllustrationsHook {
@@ -96,4 +108,16 @@ function useIllustrations (): IllustrationsHook {
   }
 }
 
-export { IllustrationsProvider, useIllustrations }
+function useIllustrationConfig (): IllustrationConfigHook {
+  const { dispatch, state } = useContext(IllustrationsContext)
+  if (state === undefined) throw new Error('useIllustrations must be used within a IllustrationsProvider')
+  const { configId } = state
+
+  const setConfigId = (id: string): void => {
+    dispatch({ type: SET_CONFIG_ID, payload: id })
+  }
+
+  return { configId, setConfigId }
+}
+
+export { IllustrationsProvider, useIllustrations, useIllustrationConfig }
