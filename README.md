@@ -1,26 +1,71 @@
 # Notionify
 
-Bienvenido a nuestro proyecto de generador de avatares al estilo Notion. Esta es una aplicación web que utiliza una API de Cloudinary que emplea reconocimiento facial avanzado para crear avatares personalizados y únicos.
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Deployment](#Deployment)
+- [Contributors](#contributors)
+- [Features](#Features)
+- [Credits](#Credits)
+- [Feedback](#Feedback)
+
+## Introduction
+This is a web application that uses a Cloudinary API which employs advanced facial recognition to create personalized and unique avatars.
+
+This project was created during the [Cloudinary](https://cloudinary.com/) hackathon organized by 
+[Midudev](https://midu.dev/), an event where different developers create themed projects in a short period of time.
+
+## Deployment
+
+**Frontend**:  ▶︎ [See frontend deployment](https://notionify.vercel.app). 
+
+**Backend**:  ▶︎ [See backend deployment](https://github.com/juanespinola05/notionify-api). 
+
+## How to use
+
+To clone and run this application, you'll need [Node.js](https://nodejs.org/en/download/) and from your command line:
+
+```bash
+$ git clone https://github.com/juanespinola05/notionify.git
+```
+
+```bash
+$ cd notionify
+```
+## Install dependencies
+```bash
+$ npm install
+```
+
+## Run the app
+```bash
+$ npm run dev
+```
+
+## Features
+
+A list of the things you can do with Notionify:
+
+* Create a [Notion](https://www.notion.so/product) avatar from your own picture.
+* Customize the outfit to your avatar
+* Customize an accessory to your avatar
+* Export a PNG/JPG file 
+* Get de exported file with different sizes
 
 
-#### Contexto
+## Contributors
 
-Este proyecto fue creado durante la hackathon organizada por Midudev, un evento donde desarrolladores de todo el mundo se unen para crear proyectos interesantes y útiles en un corto período de tiempo.
+This project was built by [Juan](https://github.com/juanespinola05) and [Rodrigo](https://github.com/rodri-alfonso)
 
+## Credits
 
-#### Acceso
+This software uses the following open source packages:
 
-La aplicación está alojada en [notionify.vercel.app](https://notionify.vercel.app). Para acceder a ella, simplemente visite el sitio web y siga las instrucciones. La API que utiliza la aplicación se encuentra en [notion-avatar.deno.dev](https://notion-avatar.deno.dev/), si desea consultar más detalles sobre cómo funciona.
+- [Cloudinary](https://cloudinary.com/)
+- [Notion Style Avatar Creator](https://www.drawkit.com/product/notion-style-avatar-creator)
 
-#### Desarrolladores
+## Feedback
 
-Este proyecto fue desarrollado por Juan Sebastian Espinola y Rodrigo Alfonso, dos apasionados de la programación y la tecnología que trabajaron arduamente para llevar a cabo esta idea.
+Feel free to send us feedback on [Rodri Twitter](https://twitter.com/rodrialfonso6) | [Juanse Twitter](https://twitter.com/rodrialfonso6)  or even [file an issue](https://github.com/juanespinola05/notionify/issues/new). Feature requests are always welcome :) 
 
-Si tiene alguna pregunta o comentario sobre este proyecto, no dude en ponerse en contacto con nosotros. Esperamos que disfrute de nuestro generador de avatares al estilo Notion tanto como nosotros disfrutamos creándolo.
-
-
-##### Pendiente
-- Hablar sobre la hackathon
-- Capturas
-- Links de la app
-- Tecnologías usadas
+#### Thanks to use Notionify. 
