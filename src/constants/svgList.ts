@@ -39,7 +39,9 @@ const svgList: SvgListType = {
       ['rounded_glasses']
     ],
     no_glasses: [],
-    sunglasses: []
+    sunglasses: [
+      ['sunglasses']
+    ]
   },
   facial_hair: {
     '': [],
