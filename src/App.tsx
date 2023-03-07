@@ -4,7 +4,7 @@ import Section from './layout/Section'
 import SectionCreator from './sections/Creator'
 import Footer from './sections/Footer'
 import Hero from './sections/Hero'
-import { IS_FEATURE_COUNTDOWN } from './constants/environment'
+import { IS_FEATURE_COUNTDOWN } from './constants'
 import Countdown from './sections/Countdown'
 
 function App (): ReactElement {

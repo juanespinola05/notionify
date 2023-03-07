@@ -5,7 +5,7 @@ import { useDetection } from '../hooks/useDetection'
 import { mapDetailsToSvg } from '../utils/svg'
 import { useIllustrations } from '../context/illustration'
 import Canvas from '../components/Canvas'
-import ConfigBar from '../components/ConfigBar'
+import Selector from '../components/Selector'
 import { ReactNode } from 'react'
 import { useError } from '../context/error'
 import { handleError } from '../utils/error'
@@ -33,7 +33,7 @@ export default function SectionCreator (): React.ReactElement {
   }
   return (
     <Section className='bg-white bg-creatorBackground bg-cover bg-center w-full grid items-center relative py-2'>
-      <div className='flex flex-col items-center gap-4'>
+      <div className='flex flex-col items-center gap-14'>
         <Menu />
         <IllustrationWrapper hasList={hasList}>
           {
@@ -42,15 +42,7 @@ export default function SectionCreator (): React.ReactElement {
               : <Dropper handleDrop={handleDrop} />
           }
         </IllustrationWrapper>
-        {hasList && <ConfigBar />}
-        {/* <DrawerMenu/> */}
-
-        <button
-          className='btn btn-active text-white'
-          onClick={() => setIllustrationsIDList(mapDetailsToSvg(detection))}
-        >
-          Regenerar
-        </button>
+        {hasList && <Selector />}
       </div>
     </Section>
   )

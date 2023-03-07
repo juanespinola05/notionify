@@ -7,3 +7,6 @@ export const ENVIRONMENT = {
 }
 
 export const IS_FEATURE_COUNTDOWN = ENVIRONMENT.FEATURE_COUNTDOWN === 'true'
+
+export const CONFIG_OUTFIT_ID = 'outfit'
+export const CONFIG_ACCESORY_ID = 'accessory'

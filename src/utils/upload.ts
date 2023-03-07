@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-throw-literal */
-import { ENVIRONMENT } from '../constants/environment'
+import { ENVIRONMENT } from '../constants'
 import cloudinaryMockResponse from '../../detectionObjectMock.json'
 import betaFaceMockResponse from '../../detectionObjectMockBetaFace.json'
 import { BetaFaceAPIResponse, CloudinaryDetectionResponse } from '../types'
