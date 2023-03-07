@@ -1,1 +1,1 @@
-export const DROPPER_LOADING_TEXT_LIST = ['Extracting file...', 'Reading documents...', 'Generating analysis...', 'Wait a sec 😳...']
+export const DROPPER_LOADING_TEXT_LIST = ["Analyzing your image... don't worry, it won't take long!", 'We are scanning your expressions and emotions! Only a moment...', 'Your image is being processed... thanks for your patience!', "We're working on it...we promise it'll be worth the wait!", 'Almost!']
