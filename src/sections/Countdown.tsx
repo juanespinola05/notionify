@@ -13,7 +13,6 @@ export default function Countdown (): React.ReactElement {
         <h2 className='text-gray-400'>(is going to be enabled for the Hackathon vote)</h2>
         <button disabled className='btn disabled:opacity-50 disabled:bg-white disabled:text-black disabled:rounded-lg disabled:font-medium py-2.5 px-6 border-2'>Get Started</button>
       </div>
-      <img src='src/assets/hero_sticker.svg' alt='' className='absolute w-full bottom-0 opacity-20' />
     </Section>
   )
 }
